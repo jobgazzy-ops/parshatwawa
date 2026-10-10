@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Варшава · квартиры</title>
+<style>
+/* Layout: sticky toolbar with tabs + stats, single column of pair cards (two apartments side by side), grids for single listings */
+:root{--bg:#f3f4f6;--panel:#ffffff;--panel2:#eef0f3;--line:#dcdfe4;--txt:#1a1d22;--mut:#5d6570;--acc:#1f6feb;--gold:#9a6700;
+--good:#1a7f4b;--warn:#9a6700;--bad:#c2312b;--star:#d4a017;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1013;--panel:#171a1f;--panel2:#1f232a;--line:#2b3038;
+--txt:#e8eaed;--mut:#9aa1ab;--acc:#58a6ff;--gold:#e3b341;--good:#3ecf8e;--warn:#e3b341;--bad:#f85149;--star:#f5c518;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1013;--panel:#171a1f;--panel2:#1f232a;--line:#2b3038;--txt:#e8eaed;--mut:#9aa1ab;--acc:#58a6ff;
+--gold:#e3b341;--good:#3ecf8e;--warn:#e3b341;--bad:#f85149;--star:#f5c518;color-scheme:dark}
+[hidden]{display:none!important}#updbar{position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:61;display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;
+max-width:calc(100% - 32px);background:var(--panel);border:1px solid var(--star);border-radius:12px;padding:10px 14px;box-shadow:0 8px 30px rgba(0,0,0,.45)}
+#toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:60;max-width:min(560px,calc(100% - 32px));background:var(--panel);border:1px solid var(--star);border-radius:12px;padding:10px 14px;box-shadow:0 8px 30px rgba(0,0,0,.4)}*{box-sizing:border-box}html,body{margin:0}body{background:var(--bg);color:var(--txt);font:14px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}
+img{max-width:100%}button{font:inherit;color:inherit}
+.bar{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+padding:10px 20px;display:flex;flex-direction:column;gap:8px}
+.bar .row{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}.bar h1{font-size:18px;margin:0}
+.bar .st{color:var(--mut);font-size:13px}.bar .st b{color:var(--txt)}#save{margin-left:auto;font-size:12px;color:var(--mut)}#copy{font-size:13px;padding:4px 12px}
+#whybox{position:fixed;inset:0;background:rgba(0,0,0,.6);display:grid;place-items:center;z-index:38}
+#whybox>div{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;width:min(560px,92vw)}
+#whybox .hint{margin:6px 0}#whychips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}#whychips .btn{font-size:13px;padding:4px 10px}
+#whytext{width:100%;background:var(--panel2);color:var(--txt);border:1px solid var(--line);border-radius:8px;padding:8px;font-family:inherit;font-size:14px;line-height:1.4;resize:vertical}#whychips .btn.on{border-color:var(--star);color:var(--star)}
+.whyact{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 0}.whyact span{flex:1}
+.note{margin:8px 0 0;padding:6px 10px;border-radius:8px;background:var(--panel2);border:1px dashed var(--line);font-size:13px}
+#profbox{position:fixed;inset:0;background:rgba(0,0,0,.6);display:grid;place-items:center;z-index:31}
+#profbox>div{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 22px;text-align:center;width:min(380px,92vw)}
+.btn.big{font-size:17px;padding:10px 22px}
+#copybox{position:fixed;inset:0;background:rgba(0,0,0,.6);display:grid;place-items:center;z-index:30}
+#copybox>div{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;width:min(640px,92vw)}
+#copybox textarea{width:100%;height:50vh;background:var(--panel2);color:var(--txt);border:1px solid var(--line);border-radius:8px;padding:8px;font:12px/1.4 ui-monospace,Menlo,monospace}
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}.tabs::-webkit-scrollbar{display:none}
+.tabs button{background:var(--panel2);border:1px solid var(--line);border-radius:999px;padding:6px 13px;cursor:pointer;white-space:nowrap}
+.tabs button.on{background:var(--acc);border-color:var(--acc);color:#fff}.tabs button .n{opacity:.7;margin-left:4px;font-variant-numeric:tabular-nums}
+main{max-width:1280px;margin:0 auto;padding:16px 20px 80px}
+.hint{color:var(--mut);margin:0 0 14px;font-size:13px}
+.filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:0 0 14px;padding:10px 12px;background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.filters label{font-size:12px;color:var(--mut);display:flex;gap:6px;align-items:center}
+.filters input,.filters select{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:5px 8px;color:var(--txt);font:inherit}
+.filters input[type=search]{min-width:200px}.filters.sorts{gap:6px;margin-top:-6px}.sorthint{flex-basis:100%;font-size:12px}.filters.sorts .btn{font-size:13px;padding:4px 11px}
+.pair{background:var(--panel);border:1px solid var(--line);border-radius:16px;margin:0 0 20px;overflow:hidden}
+.pair.picked{border-color:var(--star);box-shadow:0 0 0 1px var(--star)}
+.pair header{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);position:relative;border-bottom:1px solid var(--line);background:var(--panel2)}
+.pair header .h{display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:12px 16px;min-width:0}
+.pair header .h1{padding-right:96px}.pair header .h1 .per{margin-left:auto}.pair header .h2{padding-left:96px;border-left:1px solid var(--line)}
+.mid{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--panel);border:1px solid var(--line);border-radius:12px;
+padding:5px 12px;text-align:center;white-space:nowrap;z-index:1}.mid b{display:block;font-size:15px}.mid small{color:var(--mut);font-size:11px}
+.rank{font-size:20px;font-weight:700;color:var(--mut);font-variant-numeric:tabular-nums}.walk{font-size:16px;font-weight:600}
+.walk small{display:block;font-weight:400;color:var(--mut);font-size:12px}
+.per{display:flex;gap:12px;align-items:flex-end}
+.per>span{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.04em;align-self:center}
+.per div{display:flex;flex-direction:column}.per b{font-size:16px;font-variant-numeric:tabular-nums}.per i{font-style:normal;color:var(--mut);font-size:12px}
+.per em{font-style:normal;font-size:10px;color:var(--mut);text-transform:uppercase;letter-spacing:.04em}.per .g b{color:var(--gold)}
+.acts{margin-left:auto;display:flex;gap:6px;align-items:center}
+.btn{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:5px 12px;cursor:pointer;white-space:nowrap}
+.btn:hover{border-color:var(--acc)}.btn.star.on{background:var(--star);border-color:var(--star);color:#1a1400;font-weight:600}
+.btn:focus-visible,.tabs button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.rec{padding:12px 18px;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--acc) 8%,var(--panel))}
+.rec b{font-size:15px}.rec p{margin:6px 0 0;max-width:90ch}.rec .minus{color:var(--warn)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1px;background:var(--line)}
+.apt{background:var(--panel);display:flex;flex-direction:column;min-width:0;position:relative}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(330px,100%),1fr));gap:16px}
+.grid .apt{border:1px solid var(--line);border-radius:14px;overflow:hidden}.grid .apt.picked{border-color:var(--star);box-shadow:0 0 0 1px var(--star)}
+.apt.seen .gal{opacity:.75}
+.gal{position:relative}.gal .main{width:100%;aspect-ratio:2/1;max-height:215px;object-fit:cover;display:block;cursor:zoom-in;background:var(--panel2)}
+.gal .main.none{display:grid;place-items:center;color:var(--mut);aspect-ratio:16/10;max-height:200px}
+.gal .th{display:flex;gap:2px;padding:2px;background:var(--panel2);min-height:4px}
+.gal .th img{flex:0 0 calc((100% - 10px) / 6);min-width:0;height:50px;object-fit:cover;cursor:pointer;opacity:.85}
+.gal .th img:hover{opacity:1}
+.amap{background:color-mix(in srgb,var(--panel) 85%,transparent);border:1px solid var(--line);border-radius:999px;padding:4px 10px;cursor:pointer;font-size:13px;color:var(--txt)}.amap:hover{border-color:var(--acc)}
+.abtns{position:absolute;top:8px;right:8px;left:52px;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px;z-index:2}
+.amates{background:color-mix(in srgb,var(--panel) 85%,transparent);border:1px solid var(--line);border-radius:999px;padding:4px 10px;cursor:pointer;font-size:13px;color:var(--txt)}
+.amates:hover{border-color:var(--star)}
+#matesbox{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:33;overflow:auto;padding:24px 12px}
+#matesbox>div{max-width:1260px;margin:0 auto;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:14px 14px 4px}
+#matesbox .mhead{display:flex;gap:10px;align-items:flex-start;justify-content:space-between;margin:0 0 12px;position:sticky;top:-24px;background:var(--bg);padding:8px 0;z-index:3}.abtns .astar{position:static}
+.anope{background:color-mix(in srgb,var(--panel) 85%,transparent);border:1px solid var(--line);border-radius:999px;padding:4px 10px;cursor:pointer;font-size:13px;color:var(--txt)}
+.anope:hover{border-color:#f85149}.anope.on{background:#f85149;border-color:#f85149;color:#fff;font-weight:600}.apt.noped .gal{opacity:.45;filter:grayscale(.7)}
+.astar{position:absolute;top:8px;right:8px;background:color-mix(in srgb,var(--panel) 85%,transparent);border:1px solid var(--line);border-radius:999px;
+padding:4px 10px;cursor:pointer;font-size:13px}.astar.on{background:var(--star);border-color:var(--star);color:#1a1400;font-weight:600}
+.body{padding:12px 14px 14px}.top{display:flex;gap:8px;align-items:baseline}
+.src{font-size:11px;font-weight:600;color:var(--mut);border:1px solid var(--line);border-radius:6px;padding:1px 6px;white-space:nowrap}
+.ttl{color:var(--txt);text-decoration:none;font-weight:600}.ttl:hover{color:var(--acc)}
+.loc{color:var(--mut);font-size:13px;margin:4px 0 10px}.geo{white-space:normal}.gl{background:none;border:0;padding:0;color:var(--acc);cursor:pointer;font:inherit;text-decoration:none}.gl:hover{text-decoration:underline}
+.sch{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:12px;color:var(--mut);margin:-4px 0 10px}.sch span{color:var(--txt);font-variant-numeric:tabular-nums}
+.money{display:grid;grid-template-columns:1fr 1fr;gap:8px}.money>div{background:var(--panel2);border-radius:10px;padding:7px 11px;min-width:0}
+.lbl{font-size:10px;color:var(--mut);text-transform:uppercase;letter-spacing:.05em}.big{font-size:19px;font-weight:700;font-variant-numeric:tabular-nums}
+.usd{color:var(--mut);font-size:12px}.sub{font-size:12px;color:var(--mut);margin-top:2px}.start .big{color:var(--gold)}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}.chip{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:1px 8px;color:var(--mut)}
+.chip.good{color:var(--good);border-color:color-mix(in srgb,var(--good) 45%,transparent)}
+.chip.warn{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 45%,transparent)}
+.chip.bad{color:var(--bad);border-color:color-mix(in srgb,var(--bad) 45%,transparent)}
+.chip.ap{color:#fff;background:var(--good);border-color:var(--good)}
+.alt{font-size:12px;color:var(--mut);margin-top:7px}.alt a{color:var(--acc);margin-right:8px}
+.gonebox{margin:22px 0 10px;border:1px solid var(--line);border-radius:14px;padding:4px 14px 10px}.gonebox summary{cursor:pointer;font-weight:600;padding:10px 0}
+.gonebox .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(330px,100%),1fr));gap:10px;margin-top:6px}
+.gonebox .g{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px;opacity:.85}
+.gonebox .g img{width:72px;height:54px;object-fit:cover;border-radius:6px;flex:none;filter:grayscale(1)}.gonebox .g .ph{width:72px;height:54px;border-radius:6px;background:var(--line);flex:none}
+.gonebox .g b{display:block;font-size:13px;line-height:1.25}.gonebox .g small{color:var(--mut)}
+.mid .ss{display:block;margin-top:3px;color:var(--acc)}
+.modesw{display:inline-flex;gap:6px}.mp-head .pstar{margin-left:auto;margin-right:16px;margin-top:10px;align-self:flex-start;padding:2px 9px;font-size:16px;flex:none}
+.mp-btns3{display:grid;grid-template-columns:repeat(3,auto);gap:5px;justify-content:start}.mp-btns3 .btn{padding:4px 9px;white-space:nowrap;text-align:center}#mapbox .leaflet-popup-content .mp-btns .btn{white-space:nowrap}.mapcard{margin:0 0 14px;max-width:760px}.nbl{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(330px,100%),1fr));gap:8px}
+.nb-row{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:6px 8px;cursor:pointer;background:var(--panel)}
+.nb-row:hover{border-color:var(--acc)}.nb-row img{width:64px;height:48px;object-fit:cover;border-radius:6px;flex:none;background:var(--panel2)}.nb-row small{color:var(--mut)}
+.gonedel{margin-top:10px}.retired{margin:8px 0;color:var(--mut)}.retired summary{cursor:pointer}.retired li{margin:4px 0}
+.gone{padding:16px;color:var(--mut)}.gone a{color:var(--acc)}
+.more{display:block;margin:10px auto 0;padding:9px 22px}
+.empty{color:var(--mut);padding:40px 0;text-align:center}
+#zoom{position:fixed;inset:0;background:rgba(0,0,0,.92);display:grid;place-items:center;z-index:40}
+#zoom img{max-width:88vw;max-height:86vh;border-radius:8px;user-select:none}
+.zb{position:absolute;background:rgba(255,255,255,.12);color:#fff;border:0;border-radius:999px;width:52px;height:52px;font-size:30px;line-height:1;cursor:pointer}
+.zb:hover{background:rgba(255,255,255,.25)}.zp{left:18px;top:50%;transform:translateY(-50%)}.zn{right:18px;top:50%;transform:translateY(-50%)}
+.zx{top:16px;right:18px;width:44px;height:44px;font-size:26px}.zc{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);color:#fff;
+font-size:14px;background:rgba(0,0,0,.5);padding:4px 12px;border-radius:999px;font-variant-numeric:tabular-nums}
+.gal .cnt{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.55);color:#fff;font-size:12px;padding:2px 8px;border-radius:999px;pointer-events:none}
+@media (max-width:720px){.zp{left:6px}.zn{right:6px}.zb{width:42px;height:42px;font-size:24px}#zoom img{max-width:100vw}}
+@media (max-width:720px){.two{grid-template-columns:minmax(0,1fr)}main{padding:12px 16px 80px}.bar{padding:8px 16px}
+.pair header{grid-template-columns:minmax(0,1fr)}.pair header .h1,.pair header .h2{padding:10px 14px;border-left:0}
+.mid{position:static;transform:none;margin:0 14px 10px;justify-self:start}.pair header .h1 .per{margin-left:0;flex-direction:row}.pair header .h2{order:3}.acts{margin-left:0}.gal .main{max-height:200px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+.chip.warn{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 50%,transparent)}
+.tabs button .n.new{background:var(--star);color:#1a1400;border-radius:999px;padding:0 6px;opacity:1;font-weight:600}
+.mapwrap{position:relative}
+#mapbox{height:64vh;min-height:380px;border-radius:14px;border:1px solid var(--line);margin:8px 0;position:relative;z-index:0;isolation:isolate}
+.mapfilters{margin:8px 0}.mapfilters>summary{cursor:pointer;padding:6px 2px;color:var(--mut)}.mapsel{margin:10px 0}.maptools{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:6px 0}
+.leaflet-container{font:13px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}
+#mapbox .leaflet-popup-content-wrapper,#mapbox .leaflet-popup-tip{background:var(--panel);color:var(--txt);box-shadow:0 6px 24px rgba(0,0,0,.45)}
+#mapbox .leaflet-control-layers,#mapbox .leaflet-bar a{background:var(--panel);color:var(--txt);border-color:var(--line)}
+#mapbox .leaflet-popup-close-button{color:var(--mut)}#mapbox .leaflet-popup-content{margin:10px 12px;min-width:270px}
+#mapbox .leaflet-container a.btn,#mapbox a.btn{color:var(--txt)}a.btn{text-decoration:none;display:inline-block}
+.mp-head{display:flex;gap:8px;align-items:center;margin-bottom:8px}.mp-head img,.mp-pair img{width:60px;height:45px;object-fit:cover;border-radius:8px;flex:none;background:var(--panel2)}
+.mp-head small,.mp-pair small{color:var(--mut)}.mp-title{margin:4px 0 2px;color:var(--mut);font-size:12px}
+.mp-list{max-height:240px;overflow:auto}.mp-pair{display:flex;gap:8px;align-items:center;padding:6px 0;border-top:1px solid var(--line)}
+.mp-btns{display:flex;gap:4px;margin-left:auto;flex:none}.mp-btns .btn{padding:3px 9px}
+.mk-star{font-size:18px;line-height:22px;text-align:center;filter:drop-shadow(0 0 2px #000)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) brightness(.92) contrast(.88)}}
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="row"><h1>Варшава · квартиры</h1><span class="st" id="stats">загрузка…</span><button class="btn" id="prof" type="button" aria-haspopup="true"></button><span id="save"></span><button class="btn" id="copy" type="button">📋 Скопировать мой выбор</button></div>
+  <nav class="tabs" id="tabs"></nav>
+</div>
+<main id="main"><div class="empty">Загружаю базу…</div></main>
+<div id="profbox" hidden><div><b>Кто ты?</b><p class="hint">Так сайт поймёт, чей это список ★. Сменить можно кнопкой вверху.</p>
+  <p style="display:flex;gap:10px;justify-content:center;margin:14px 0 4px"><button class="btn big" data-prof="vlad">👤 Влад</button><button class="btn big" data-prof="kotik">🐱 Котик</button></p></div></div>
+<div id="copybox" hidden><div><b>Скопируй этот текст и отправь</b><p class="hint">Выдели всё (⌘A / Ctrl+A) и скопируй.</p><textarea id="copytext" readonly></textarea>
+  <p style="text-align:right;margin:10px 0 0"><button class="btn" id="copyclose" type="button">Закрыть</button></p></div></div>
+<div id="whybox" hidden role="dialog" aria-labelledby="whyttl"><div><b id="whyttl">Почему скрываешь?</b><p class="hint" id="whysub"></p>
+  <p class="hint">Комментарий необязателен — он нужен, чтобы я понимал, какие квартиры вам не подходят, и не предлагал похожие.</p>
+  <div id="whychips"></div><textarea id="whytext" rows="3" placeholder="Например: старый ремонт в ванной, кухня маленькая, окна во двор-колодец…"></textarea>
+  <p class="whyact"><button class="btn" type="button" data-why="cancel">Отмена</button><span></span><button class="btn" type="button" data-why="skip">Скрыть без комментария</button><button class="btn star on" type="button" data-why="ok">Скрыть с комментарием</button></p></div></div>
+<div id="updbar" hidden role="status"><span>🔄 На сайте новые данные — обнови страницу, чтобы их увидеть</span>
+  <button class="btn star on" type="button" id="updgo">Обновить</button><button class="btn" type="button" id="updlater">Позже</button></div>
+<div id="matesbox" hidden role="dialog" aria-label="Все пары с квартирой"><div><div class="mhead"><div><b id="matesttl"></b><p class="hint" id="matessub"></p></div>
+  <button class="btn" type="button" id="matesclose">✕ Закрыть</button></div><div id="matesbody"></div></div></div>
+<div id="toast" hidden role="status"></div>
+<div id="zoom" hidden role="dialog" aria-label="Фото квартиры">
+  <button class="zb zx" data-zx aria-label="Закрыть">×</button>
+  <button class="zb zp" data-zp aria-label="Предыдущее фото">‹</button>
+  <img alt="" id="zimg">
+  <button class="zb zn" data-zn aria-label="Следующее фото">›</button>
+  <div class="zc" id="zcnt"></div>
+</div>
+<script>window.__PUBLIC__=true;window.__V__="8df1e7a9b039";</script><script>
+const TABS=[
+ ["top","Все пары","Лучшие пары по всей базе: рейтинг по фото, году дома, кровати и центру. Обе квартиры в пределах 15 минут пешком."],
+ ["map","🗺 Карта","Каждая точка — квартира (зелёная — по фото 4–5, жёлтая — 3, серая — ещё не оценена); число в подсказке — сколько у неё пар. Нажми на точку: покажу всех её соседок (линии) и список пар с кнопками ★ / скрыть / полная карточка / открыть объявление. Обводка: золотая — ★ Влада, розовая — ★ Котика, фиолетовая — моя рекомендация. Круг — 2 км от Дворца культуры, 🏫 — школа. Фильтры — как во «Всех парах». Справа вверху слои: можно включить линии всех пар сразу."],
+ ["recs","💡 Рекомендации","Пары, которые я отобрал сам: смотрел фото, цены, расстояния и дорогу до школы. У каждой — почему стоит посмотреть и на что обратить внимание."],
+ ["fresh","Свежие","Пары, где одна из квартир появилась за сутки или подешевела."],
+ ["singles","Новые и подешевевшие","Отдельные квартиры, которые появились за сутки или подешевели. Даже без пары, на заметку."],
+ ["base","Вся база","Все квартиры в базе. Фильтруй и отмечай ★ понравившиеся."],
+ ["fav","★ Избранное","Отмеченные пары и квартиры. Переключай: Влад или Котик. Отмечать можно только в своём списке."],
+ ["hidden","Скрытые","Квартиры и пары, которые ты скрыл кнопкой ✕. Скрытая квартира убирает и все пары с ней — вторая квартира из пары получит новых соседей при следующем обновлении. Здесь всё можно вернуть."]];
+const SRC={olx:"OLX",otodom:"Otodom",adresowo:"Adresowo",gratka:"Gratka",nonline:"Nieruchomości-online"};
+const VIS={5:"good",4:"good",3:"warn",2:"bad",1:"bad"};
+let D=null,L={},S={pairs:{},apts:{},hidden:{},nope:{},seen:{}},OWNER=null,KOTIK=null,RECS=null,tab="top",shown={},api=true;
+// profile = whose list you're keeping (chosen at the top, remembered in this browser).
+// Vlad's ★ go to the server on Vlad's Mac (picks.json) when it is reachable: localhost, or the public site opened on that Mac.
+const LOCAL=/^(localhost|127\.0\.0\.1)$/.test(location.hostname), API=LOCAL?"":"http://127.0.0.1:8811";
+const WHO={vlad:"Влад",kotik:"Котик"},ICON={vlad:"👤",kotik:"🐱"};
+let PROFILE=null;try{PROFILE=localStorage.getItem("wr_profile")}catch(_){}
+if(!PROFILE&&LOCAL)PROFILE="vlad";
+let ME=PROFILE||"kotik",FAV=ME,VLAD=null,KOTIK_LIVE=null;
+const favSrc=w=>(w===ME?S:w==="vlad"?VLAD:(KOTIK_LIVE||KOTIK))||{pairs:{},apts:{}};
+const favCount=w=>{const f=favSrc(w);return Object.keys(f.pairs||{}).length+Object.keys(f.apts||{}).length};
+const F={q:"",sort:"score",vis:"0",nb:false,max:"",dist:"",ps:["score"],pwalk:"",pmax:"",pvis:"0",pnb:false,pbig:false,p1500:false,pc:false,cc:false,puniq:true,prooms:"",rooms:"",bbig:false,b1500:false,bnew:false,bs:["score"]};
+const nRooms=l=>{const r=String((l||{}).rooms||"").toLowerCase();return {two:2,three:3,four:4,"2":2,"3":3,"4":4,"5":5}[r]||0};
+const UTIL=250;                                   // electricity / water / internet on top of rent + czynsz, zł per month (estimate)
+const allIn=l=>l.total+UTIL, under1500=l=>!!l&&!l.gone&&allIn(l)<=1500*D.usd;
+try{const v=JSON.parse(localStorage.getItem("wr_pf")||"null");if(v)Object.assign(F,v)}catch(_){}
+try{F.pmax="";F.pvis="0"}catch(_){}
+const savePF=()=>{try{localStorage.setItem("wr_pf",JSON.stringify({ps:F.ps,pwalk:F.pwalk,pmax:F.pmax,pvis:F.pvis,pnb:F.pnb,pbig:F.pbig,p1500:F.p1500,pc:F.pc,puniq:F.puniq,prooms:F.prooms}))}catch(_){}};
+const PKIN={lat:52.2318,lon:21.0060};       // the user's "centre": 2 km around the Palace of Culture
+const kmPK=l=>{if(!l||!l.lat)return 99;const t=Math.PI/180,h=Math.sin((l.lat-PKIN.lat)*t/2)**2+Math.cos(PKIN.lat*t)*Math.cos(l.lat*t)*Math.sin((l.lon-PKIN.lon)*t/2)**2;return 12742*Math.asin(Math.sqrt(h))};
+const inCentre=l=>kmPK(l)<=2;
+const isBig=l=>!!l&&(l.big||l.m>=55||["three","3","four","4"].includes(String(l.rooms)));
+// pair sort criteria: lower value = better; several can be on at once -> pairs ranked by their average place
+const apt=id=>L[id]&&!L[id].gone?L[id]:null;
+// when a listing appeared: the portal's publish time, else the day we first saw it ("baseline" = was there from the start)
+const addedTs=id=>{const l=L[id];if(!l)return 0;let m=0;for(const s of [l.created,l.first]){if(!s||s==="baseline")continue;const t=Date.parse(String(s).replace(" ","T"));if(!isNaN(t)&&t>m)m=t}return m};   // later of: posted on the portal / first seen by the collector
+// flats the user already knows (opened, or ★ of Vlad / Kotik, alone or in a ★ pair): they add no "newness" to a pair
+const knownIds=()=>{const k=new Set(Object.keys(S.seen||{}));for(const w of ["vlad","kotik"]){const f=favSrc(w);Object.keys(f.apts||{}).forEach(i=>k.add(i));Object.keys(f.pairs||{}).forEach(i=>i.split("~").forEach(x=>k.add(x)))}return k};
+let KNOWN=new Set();
+const newTs=id=>KNOWN.has(id)?0:addedTs(id);
+const BSORT={score:["⭐ рейтинг",l=>-(l.score||0)],
+  newest:["🆕 сначала новые",l=>-((NEWL.has(l.id)&&!KNOWN.has(l.id)?1e14:0)+newTs(l.id))],
+  month:["💸 дешевле в месяц",l=>l.total||1e6],
+  pricey:["💎 дороже в месяц",l=>-(l.total||0)],
+  start:["💰 дешевле на старте",l=>l.start||1e6],
+  area:["📐 больше площадь",l=>-(l.m||0)],
+  school:["🏫 до школы (быстрее всего)",l=>Math.min((l.sch||{}).pt??999,(l.sch||{}).walk??999)],
+  schoolwalk:["🚶 до школы пешком",l=>(l.sch||{}).walk??999]};
+const BSORT_HINT={score:"по рейтингу (фото, год дома, кровать, центр, площадь)",newest:"по времени появления объявления (сверху недавние)",month:"по аренде в месяц, дешевле сверху",pricey:"по аренде в месяц, дороже сверху",start:"по первому платежу (месяц + залог)",area:"по площади, большие сверху",school:"по времени до школы самым быстрым способом",schoolwalk:"по времени до школы пешком"};
+try{const v=JSON.parse(localStorage.getItem("wr_bs")||"null");if(Array.isArray(v)&&v.length&&v.every(k=>BSORT[k]))F.bs=v}catch(_){}
+function sortListings(ls){KNOWN=knownIds();const keys=F.bs.filter(k=>BSORT[k]);if(!keys.length)return ls;const n=ls.length,sc=new Map(ls.map(l=>[l,0]));
+  for(const k of keys){const f=BSORT[k][1];ls.map(l=>[l,f(l)]).sort((a,b)=>a[1]-b[1]).forEach(([l],i)=>sc.set(l,sc.get(l)+i/n))}
+  return ls.slice().sort((a,b)=>sc.get(a)-sc.get(b))}
+const PSORT={score:["⭐ рейтинг",p=>-((p.tier??1)*1000+(p.score||0))],
+  walk:["🚶 ближе друг к другу",p=>p.walk??(p.d!=null?p.d/80:99)],
+  newest:["🆕 сначала новые",p=>-((NEWP.has(p.id)?1e14:0)+Math.max(...[p.a,p.b].map(newTs)))],
+  month:["💸 дешевле в месяц",p=>pairSum(p,"total")],
+  pricey:["💎 дороже в месяц",p=>-pairSum(p,"total")],
+  start:["💰 дешевле на старте",p=>pairSum(p,"start")],
+  area:["📐 больше площадь",p=>-Math.min(...[p.a,p.b].map(id=>(apt(id)||{}).m||0))],
+  school:["🏫 до школы (быстрее всего)",p=>schoolT(p,"fast")],
+  schoolwalk:["🚶 до школы пешком",p=>schoolT(p,"walk")]};
+// pair's time to school = the apartment that is FARTHER (both of you go there); "fast" = transit or walking, whichever is quicker
+function schoolT(p,mode){return Math.max(...[p.a,p.b].map(id=>{const l=apt(id),s=l&&l.sch;if(!s)return 999;
+  return mode==="walk"?(s.walk??999):Math.min(s.pt??999,s.walk??999)}))}
+const PSORT_HINT={newest:"по времени появления: пара свежая настолько, насколько свежая её новейшая квартира (сверху недавно появившиеся)",area:"по площади меньшей из двух квартир (большие сверху)",score:"по рейтингу: сначала пары, где обе квартиры современные (4–5 по фото), потом ещё не оценённые, ниже — со «средней» квартирой; внутри — фото, год дома, кровать, центр, площадь",walk:"по времени пешком между квартирами",
+  month:"по сумме аренды обеих квартир в месяц",pricey:"по сумме аренды обеих квартир — сначала самые дорогие",start:"по сумме первого платежа (месяц + залог) обеих",
+  school:"по времени до школы самым быстрым способом (транспорт или пешком) — берётся квартира, которая дальше",
+  schoolwalk:"по времени до школы пешком — берётся квартира, которая дальше"};
+function sortKeep(ps){        // a swapped-in pair keeps the slot of the pair it replaced
+  const m=new Map(ps.map(p=>[p.swap?p.swap.of:p,p]));return sortPairs([...m.keys()]).map(k=>m.get(k))}
+function sortPairs(ps){
+  KNOWN=knownIds();
+  const keys=F.ps.filter(k=>PSORT[k]);if(!keys.length)return ps;
+  const n=ps.length,score=new Map(ps.map(p=>[p,0]));
+  for(const k of keys){const v=ps.map(p=>[p,PSORT[k][1](p)]).sort((a,b)=>a[1]-b[1]);v.forEach(([p],i)=>score.set(p,score.get(p)+i/n))}
+  return ps.slice().sort((a,b)=>score.get(a)-score.get(b));
+}
+function pairPass(p){
+  const a=apt(p.a),b=apt(p.b);
+  if(+F.pwalk&&(p.walk??(p.d!=null?p.d/80:99))>+F.pwalk)return false;
+  if(+F.pmax&&[a,b].some(l=>!l||l.total>+F.pmax))return false;
+  if(+F.pvis&&[a,b].some(l=>!l||(l.vis||0)<+F.pvis))return false;
+  if(F.pnb&&[a,b].some(l=>!l||(l.year||0)<2018))return false;
+  if(F.pbig&&![a,b].every(isBig))return false;
+  if(F.prooms==="2"&&![a,b].every(l=>nRooms(l)===2))return false;
+  if(F.prooms==="3"&&![a,b].every(l=>nRooms(l)>=3))return false;
+  if(F.prooms==="13"&&![a,b].some(l=>nRooms(l)>=3))return false;
+  if(F.p1500&&![a,b].every(under1500))return false;
+  if(F.pc&&![a,b].every(inCentre))return false;
+  return true;
+}
+const pairSum=(p,k)=>[p.a,p.b].reduce((s,id)=>s+((L[id]&&!L[id].gone&&L[id][k])||1e6),0);
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const zl=v=>Math.round(v).toLocaleString("ru-RU").replace(/,/g," ")+" zł";
+const usd=v=>"$"+Math.round(v/D.usd).toLocaleString("ru-RU");
+
+async function serverState(){try{const r=await fetch(API+"/api/state",{cache:"no-store"});if(r.ok)return await r.json()}catch(_){}return null}
+const lsGet=k=>{try{return JSON.parse(localStorage.getItem(k)||"null")}catch(_){return null}};
+const blank=()=>({pairs:{},apts:{},hidden:{},nope:{},seen:{}});
+// shared online store (Firebase Realtime Database, config in fb.json): rooms/<secret room>/<profile> = that person's ★ list
+let FB=null,srvUp=false;
+const fbUrl=w=>`${FB.db}/rooms/${FB.room}/${w}.json`;
+async function fbGet(w){try{const r=await fetch(fbUrl(w),{cache:"no-store"});if(r.ok)return await r.json()}catch(_){}return undefined}
+async function fbPut(w,st){const r=await fetch(fbUrl(w),{method:"PUT",body:JSON.stringify(st)});if(!r.ok)throw new Error(r.status)}
+// only what changed since the last sync goes to the shared store (PATCH by key): two open tabs / devices, or a
+// server-side update, never wipe each other's ★ / hidden any more
+let BASE=null;const SECS=["pairs","apts","hidden","nope","seen"];
+const snap=()=>{BASE=JSON.parse(JSON.stringify(S))};
+async function fbPatch(w){const up={},b=BASE||blank();
+  for(const k of SECS){const x=b[k]||{},y=S[k]||{};for(const id of new Set([...Object.keys(x),...Object.keys(y)]))
+    if(JSON.stringify(x[id])!==JSON.stringify(y[id]))up[`${k}/${id}`]=y[id]===undefined?null:y[id]}
+  up._t=S._t;const r=await fetch(fbUrl(w),{method:"PATCH",body:JSON.stringify(up)});if(!r.ok)throw new Error(r.status);snap()}
+async function loadState(){
+  try{const r=await fetch("fb.json",{cache:"no-store"});if(r.ok){const c=await r.json();if(c.db&&c.room)FB=c}}catch(_){}
+  const srv=(ME==="vlad"||LOCAL)?await serverState():null;     // only Vlad's Mac runs the server; Kotik's browser never probes it
+  srvUp=!!srv;
+  const local=lsGet("wr_state_"+ME)||(ME==="kotik"?lsGet("wr_state_public")||lsGet("wr_state_share"):lsGet("wr_state"));
+  if(FB){
+    const mine=await fbGet(ME),other=await fbGet(ME==="vlad"?"kotik":"vlad");
+    if(mine!==undefined){api="fb";
+      S=Object.assign(blank(),mine||(ME==="vlad"?srv:local)||{});     // first time: move the existing list into the shared store
+      if(!mine&&(Object.keys(S.pairs).length||Object.keys(S.apts).length))fbPut(ME,{...S,_t:Date.now()}).catch(()=>{});
+      snap();if(ME==="vlad")VLAD=S;else{VLAD=other||null;}
+      if(ME==="kotik")KOTIK_LIVE=S;else KOTIK_LIVE=other||null;
+      OWNER=VLAD;return}
+  }
+  if(ME==="vlad"&&srv){api=true;S=Object.assign(blank(),srv)}
+  else{api=false;S=Object.assign(blank(),local||{})}
+  VLAD=ME==="vlad"?S:srv||(window.__SHARE__?window.__SHARE__.state:null);
+  if(!VLAD&&window.__PUBLIC__){try{VLAD=await (await fetch("state.json",{cache:"no-store"})).json()}catch(_){}}
+  OWNER=VLAD;
+}
+let saveT=null;
+function save(){
+  S._t=Date.now();
+  try{localStorage.setItem("wr_state_"+ME,JSON.stringify(S))}catch(_){}
+  if(!api){$("#save").textContent=ME==="vlad"?"сохранено в этом браузере (сервер на Mac недоступен)":"сохранено в этом браузере — отправь Владу кнопкой 📋";return}
+  clearTimeout(saveT);$("#save").textContent="сохраняю…";
+  saveT=setTimeout(async()=>{let ok=true;
+    if(api==="fb"){try{await fbPatch(ME)}catch(e){ok=false}}
+    if(ME==="vlad"&&(api===true||srvUp)){try{await fetch(API+"/api/state",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(S)})}catch(_){if(api===true)ok=false}}
+    $("#save").textContent=ok?(api==="fb"?"✓ сохранено — видно обоим":"✓ выбор сохранён"):"не удалось сохранить — проверь интернет";saveT=null},300);
+}
+// keep the other person's list (and this profile on another device) fresh
+async function refreshShared(){
+  if(api!=="fb"||!$("#zoom").hidden)return;
+  const other=ME==="vlad"?"kotik":"vlad";const [mine,oth]=[await fbGet(ME),await fbGet(other)];
+  let changed=false;
+  if(mine&&(mine._t||0)>(S._t||0)&&!saveT){S=Object.assign(blank(),mine);snap();changed=true;if(ME==="vlad")VLAD=OWNER=S;else KOTIK_LIVE=S}
+  if(oth!==undefined){const cur=JSON.stringify(ME==="vlad"?KOTIK_LIVE:VLAD);if(JSON.stringify(oth)!==cur){if(ME==="vlad")KOTIK_LIVE=oth;else VLAD=OWNER=oth;changed=true}}
+  if(changed&&!document.activeElement?.id?.startsWith("f-"))render();
+}
+setInterval(refreshShared,30000);document.addEventListener("visibilitychange",()=>{if(!document.hidden)refreshShared()});
+const now=()=>new Date().toISOString().slice(0,16);
+const byNew=o=>Object.keys(o||{}).sort((a,b)=>String((o[b]||{}).t||"").localeCompare(String((o[a]||{}).t||"")));   // newest added first
+function togglePair(p){if(S.pairs[p.id])delete S.pairs[p.id];else S.pairs[p.id]={t:now(),a:L[p.a].url,b:L[p.b].url,tag:p.tag,n:p.n||null};save();render()}
+function hidePair(p,note){if(S.hidden[p.id])delete S.hidden[p.id];else{S.hidden[p.id]={t:now(),a:L[p.a].url,b:L[p.b].url};if(note)S.hidden[p.id].note=note;delete S.pairs[p.id]}save();render()}
+function toggleApt(id){if(S.apts[id])delete S.apts[id];else{S.apts[id]={t:now(),url:L[id].url};delete S.nope[id]}save();render()}
+function nopeApt(id,note){const hide=!S.nope[id];if(!hide)delete S.nope[id];else{S.nope[id]={t:now(),url:L[id].url};if(note)S.nope[id].note=note;delete S.apts[id]}save();render();if(hide)toast("Квартиру скрыл. "+(swapNote(id)||""))}
+// "✕ скрыть" first asks why (optional): the reasons are read by Claude to learn what doesn't fit
+const WHY_CHIPS=["💸 дорого","🛠 старый ремонт","📐 маленькая","🛏 нет нормальной кровати","🍳 плохая кухня/ванная","📍 неудобное место","🏚 не нравится дом/подъезд","🌑 темно, мало света","📷 по фото не понять","↔ квартиры слишком разные"];
+let WHY=null;
+function askWhy(kind,x){WHY={kind,x};const l=kind==="apt"?L[x]:null;
+  $("#whyttl").textContent=kind==="apt"?"Почему скрываешь эту квартиру?":"Почему скрываешь эту пару?";
+  $("#whysub").textContent=l?[l.title,l.dist||l.district,l.m?l.m+" m²":"",l.total?zl(l.total)+"/мес":""].filter(Boolean).join(" · "):"";
+  $("#whychips").innerHTML=WHY_CHIPS.filter(c=>kind==="pair"||!c.startsWith("↔")).map(c=>`<button type="button" class="btn" data-whychip="${c}">${c}</button>`).join("");
+  $("#whytext").value="";$("#whybox").hidden=false;setTimeout(()=>$("#whytext").focus(),30)}
+function closeWhy(go,withNote){const w=WHY;WHY=null;$("#whybox").hidden=true;if(!go||!w)return;
+  const note=withNote?$("#whytext").value.trim():"";
+  if(w.kind==="apt")nopeApt(w.x,note);else hidePair(w.x,note)}
+let toastT=null;function toast(t){const e=$("#toast");e.textContent=t;e.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>{e.hidden=true},7000)}
+const noNope=p=>!S.nope[p.a]&&!S.nope[p.b];     // a pair with a hidden apartment leaves the lists
+// ...but its other apartment isn't lost: if it isn't in another shown pair, its next-best partner (top/fresh/spare pairs)
+// takes the place, marked 🔄; with no partner left it simply stays in "Вся база"
+let BY=null;
+function byApt(){if(BY)return BY;BY={};const seenId=new Set();
+  for(const q of [...D.top,...D.fresh,...(D.spare||[])]){if(seenId.has(q.id))continue;seenId.add(q.id);for(const k of [q.a,q.b])(BY[k]=BY[k]||[]).push(q)}
+  for(const k in BY)BY[k].sort((x,y)=>(y.score||0)-(x.score||0)||(x.walk??99)-(y.walk??99));return BY}
+function matesOf(k,except){return (byApt()[k]||[]).filter(q=>q.id!==except&&noNope(q)&&!S.hidden[q.id])}
+function partnerFor(k,used){return (byApt()[k]||[]).find(q=>!used.has(q.id)&&noNope(q)&&!S.hidden[q.id])}
+function withSwaps(arr){
+  const out=arr.filter(noNope),used=new Set(out.map(p=>p.id)),inList=new Set(out.flatMap(p=>[p.a,p.b]));const res=[];
+  for(const p of arr){if(noNope(p)){res.push(p);continue}
+    const keep=[p.a,p.b].filter(k=>!S.nope[k]);if(keep.length!==1||inList.has(keep[0]))continue;
+    const k=keep[0],q=partnerFor(k,used);if(!q)continue;
+    used.add(q.id);inList.add(q.a);inList.add(q.b);
+    const left=p.a===k,other=q.a===k?q.b:q.a;
+    res.push(Object.assign({},q,{a:left?k:other,b:left?other:k,rec:null,swap:{keep:k,gone:left?p.b:p.a,was:p.rec?p.rec.title:null,of:p}}))}
+  return res}
+function swapNote(id){         // after "✕ скрыть": tell where the other apartment of that pair went
+  const ps=[...pairsFor("top"),...pairsFor("fresh"),...pairsFor("recs")];
+  const mates=new Set();for(const p of [...D.top,...D.fresh,...((RECS||{}).items||[])])if(p.a===id||p.b===id)mates.add(p.a===id?p.b:p.a);
+  const msgs=[...mates].filter(m=>!S.nope[m]).map(m=>ps.some(p=>p.swap&&p.swap.keep===m)?"🔄 Для второй квартиры подобрал новую пару — она в списке с пометкой «новая пара»"
+     :ps.some(p=>p.a===m||p.b===m)?"Вторая квартира осталась в других парах":"Для второй квартиры другой пары нет — она осталась во «Вся база»");
+  return [...new Set(msgs)].join("; ")}
+function seen(id){if(!S.seen[id]){S.seen[id]=now();save()}}
+
+function chips(l){
+  const c=[];const ch=(t,k="",tip="")=>c.push(`<span class="chip ${k}"${tip?` title="${esc(tip)}"`:""}>${t}</span>`);
+  if(l.vis)ch(`фото ${l.vis}/5`,VIS[l.vis],"Моя оценка интерьера по фото по твоей шкале: 5 — дизайн/бутик, 4 — аккуратная новостройка, 3 — нейтрально, 2 — устаревшее.");
+  if(inCentre(l))ch(`📍 центр · ${kmPK(l).toFixed(1)} км от Дворца`,"good","До 2 км от Дворца культуры — ваш «центр».");
+  if(isBig(l))ch(`📐 ${String(l.rooms)==="three"||String(l.rooms)==="3"?"3 комнаты":"большая"} · ${l.m} м²`,"good","Большая квартира (от 55 м² или 3 комнаты) — как вы хотите.");
+  if(l.fresh)ch("🆕 новое","good","Объявление появилось за последние сутки.");
+  if(l.drop>0)ch(`📉 подешевела на ${zl(l.drop)}`,"good","Цена снизилась с прошлого сбора.");
+  if(l.year)ch(`дом ${l.year}`,l.year>=2018?"good":"",l.year_src==="near"?"Год постройки взят из другого объявления в этом же доме.":"Год постройки из объявления.");
+  const bed={ok:["🛏 двуспальная кровать","good","В описании указана двуспальная кровать (140/160×200 или «małżeńskie»)."],
+    sofa:["⚠ в спальне диван","bad","По описанию в спальне раскладной диван, а не кровать."],
+    "sofa?":["есть раскладной диван","warn","В описании упомянут раскладной диван — проверь по фото, есть ли нормальная кровать."],
+    bed:["кровать без размера","","Кровать упомянута, но размер не указан — проверь по фото."],
+    "?":["про кровать не написано","","В тексте объявления про кровать ничего нет — смотри фото или спроси владельца."]}[l.bed]||["про кровать не написано","",""];
+  ch(...bed);
+  if(l.dep&&l.dep>2.05)ch(`⚠ залог ${l.dep}× аренды`,"bad","Залог больше двух месяцев — минус.");
+  if(l.multi>=4)ch(`⚠ у продавца ${l.multi} объявлений`,"warn","Много объявлений от одного продавца — может быть скрытый агент или фирма.");
+  if(l.outside)ch("⚠ точка на карте вне Варшавы","bad","Владелец поставил неверную точку — расстояния и время не считаются, в пары не попадает.");
+  if(l.fallback)ch("⚠ точный адрес не указан","warn","Точка стоит в центре района (адрес не указан) — расстояния примерные, в пары не попадает.");
+  if(l.pin_off>700)ch(`⚠ точка на карте не совпадает с улицей`,"bad",`Метка на карте в ${l.pin_off} м от указанной улицы — расстояния могут быть неточными.`);
+  if(l.rent_src==="est")ch("czynsz не указан, взял ~700 zł","warn","Владелец не написал czynsz (плата за дом). В расчёт подставлено примерно 700 zł — уточни у владельца.");
+  if(l.reserved)ch("⏸ в резерве","warn","В заголовке написано rezerwacja/wynajęte — скорее всего уже договорились с кем-то.");
+  else if(l.alive&&l.alive.status==="gone"&&(l.alive.gone_n||0)>=2)ch("⚠ снято с сайта","bad",`Проверено ${l.alive.checked.replace("T"," ")}`);
+  else if(l.last_seen===D.built)ch("✓ актуально сегодня","good","Объявление есть в сегодняшнем сборе с сайта — ещё не сдано.");
+  else if(l.alive)ch(l.alive.status==="active"?"✓ активно":l.alive.status==="gone"?"⚠ снято с сайта":"? не удалось проверить",
+     l.alive.status==="active"?"good":l.alive.status==="gone"?"bad":"",`Проверено ${l.alive.checked.replace("T"," ")}`);
+  if(S.seen[l.id])ch("👁 уже открывал","","Ты уже открывал это объявление.");
+  return c.join("");
+}
+function gallery(l){
+  const ph=(l.photos||[]).map(esc);
+  if(!ph.length)return `<div class="gal"><div class="main none">${l.nophoto?"фото на сайте объявления сейчас не открываются — проверю завтра снова":"нет фото"}</div></div>`;
+  return `<div class="gal" data-gid="${l.id}"><img class="main" src="${ph[0]}" loading="lazy" alt="" data-z="0">
+   ${ph.length>1?`<span class="cnt">📷 ${ph.length}</span>`:""}
+   <div class="th">${ph.slice(1,7).map((u,i)=>`<img src="${u}" loading="lazy" alt="" data-sw="${i+1}">`).join("")}</div></div>`;
+}
+function school(l){const s=l.sch||{};
+  const f=v=>{if(v==null)return "—";v=Math.round(v);return v<60?v+" мин":`${Math.floor(v/60)} ч${v%60?" "+v%60+" мин":""}`};
+  if(l.outside)return `<div class="sch">🏫 до школы: <span>точка на карте вне Варшавы — время не посчитать</span></div>`;
+  return `<div class="sch" title="До школы (ul. Mazowiecka 12). Такси — по дорогам с поправкой на пробки. Транспорт — по расписанию ZTM, прибытие к 9:00 в будний день.">🏫 до школы: <span>🚶 ${f(s.walk)}</span><span>🚕 ~${f(s.taxi)}</span><span>🚌 ${s.pt==null?"—":f(s.pt)}</span></div>`}
+function aptCard(id,ctx){ctx=typeof ctx==="string"?ctx:null;
+  const l=L[id];if(!l)return `<div class="apt"><div class="gone">нет данных</div></div>`;
+  if(l.gone){const a=l.alive||{};const msg=a.status==="gone"?"⚠ Объявление снято с сайта — квартиру, скорее всего, уже сдали."
+      :a.status==="active"?"✓ Объявление ещё висит на сайте, но данные по нему пока не подтянулись (обновятся при следующей проверке). Открой и посмотри."
+      :a.status==="reserved"?"⏸ В объявлении написано, что квартира в резерве."
+      :"Этой квартиры нет в сегодняшней базе, проверить не удалось.";
+    return `<div class="apt"><div class="gone"><b>${esc(l.title||"")}</b><br>${msg}${a.checked?`<br><small>проверено ${a.checked.replace("T"," ")}</small>`:""}<br><a href="${esc(l.url)}" target="_blank" rel="noopener">открыть объявление</a>${(()=>{const mine=(tab!=="fav"||FAV===ME),pr=ctx&&S.pairs[ctx],ap=S.apts[id];
+      if(mine)return pr||ap?`<br><button class="btn gonedel" type="button" data-gonedel="${id}" data-gonepair="${pr?ctx:""}" title="Объявление уже недоступно — убрать из твоего избранного">🗑 ${pr?"Убрать пару из избранного":"Убрать из избранного"} — объявление снято</button>`:"";
+      if(api==="fb"&&tab==="fav"){const src=favSrc(FAV)||{},opr=ctx&&(src.pairs||{})[ctx],oap=(src.apts||{})[id];      // someone else's list: dead ads can be cleared from it too
+        if(opr||oap)return `<br><button class="btn gonedel" type="button" data-gonedel="${id}" data-gonepair="${opr?ctx:""}" data-gonewho="${FAV}" title="Объявление уже недоступно — убрать из списка ${WHO[FAV]}">🗑 Убрать из списка ${WHO[FAV]} — объявление снято</button>`}
+      return ""})()}</div></div>`}
+  const rn={param:"",text:" (из описания)",incl:" (уже в цене)",est:" (не указан, ~700)"}[l.rent_src]||"";
+  const place=[l.dist||l.district,l.street].filter(Boolean).join(" · ");
+  const alt=(l.alt||[]).map(a=>`<a href="${esc(a.url)}" target="_blank" rel="noopener">${SRC[a.src]||a.src} ${zl(a.total)}</a>`).join("");
+  return `<div class="apt ${S.apts[id]?"picked":""} ${S.nope[id]?"noped":""} ${S.seen[id]?"seen":""}">${gallery(l)}
+   <div class="abtns">${(()=>{const n=matesOf(id,ctx).length;return n?`<button class="amates" data-mates="${id}" title="Все пары с этой квартирой">🔁 ${ctx?"ещё ":""}${plural(n,"пара","пары","пар")}</button>`:""})()}<button class="anope ${S.nope[id]?"on":""}" data-anope="${id}" title="${S.nope[id]?"Вернуть квартиру — её пары снова появятся":"Квартира не нравится — скрыть её и все пары с ней"}">${S.nope[id]?"↩ вернуть":"✕ скрыть"}</button>
+   <button class="astar ${S.apts[id]?"on":""}" data-astar="${id}" aria-pressed="${!!S.apts[id]}">${S.apts[id]?"★ выбрана":"☆ квартира"}</button></div>
+   <div class="body"><div class="top"><span class="src">${SRC[l.src]||l.src}</span>
+    <a class="ttl" href="${esc(l.url)}" target="_blank" rel="noopener" data-seen="${id}">${esc(l.title)}</a></div>
+    <div class="loc">${esc(place)}${l.m?` · ${l.m} m²`:""}${(()=>{const q=l.pt||[l.lat,l.lon];if(!q||!q[0])return"";
+      return ` <span class="geo">· <button class="gl" type="button" data-onmap="${id}" data-onmappair="${ctx||""}" title="Показать на карте сайта">🗺 на карте</button> · <a class="gl" href="https://www.google.com/maps/search/?api=1&query=${q[0]},${q[1]}" target="_blank" rel="noopener" title="Открыть в Google Maps">Google Maps</a> · <a class="gl" href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${q[0]},${q[1]}" target="_blank" rel="noopener" title="Посмотреть улицу в Street View">Street View</a></span>`})()}</div>${school(l)}
+    <div class="money"><div><div class="lbl">в месяц</div><div class="big">${zl(l.total)}</div><div class="usd">${usd(l.total)}</div>
+      <div class="sub">аренда ${zl(l.price)} + czynsz ${zl(l.rent)}${rn}</div>
+      <div class="sub" title="Плюс свет, вода, интернет ~${UTIL} zł — примерная оценка">со всеми платежами ≈ ${zl(allIn(l))} (${usd(allIn(l))})</div></div>
+     <div class="start"><div class="lbl">на старте</div><div class="big">${zl(l.start)}</div><div class="usd">${usd(l.start)}</div>
+      <div class="sub">kaucja ${zl(l.dep_zl)} (${usd(l.dep_zl)})${l.dep_src==="est"?" — не указан, взял 1 месяц":""}</div></div></div>
+    ${S.nope[id]&&S.nope[id].note?`<div class="note">💬 ${esc(S.nope[id].note)}</div>`:""}<div class="chips">${chips(l)}</div>${alt?`<div class="alt">также: ${alt}</div>`:""}</div></div>`;
+}
+function per(label,id){const l=L[id];if(!l||l.gone){const st=(l&&l.alive||{}).status;return `<div class="per"><span>${label}</span><div><b>—</b><em>${st==="gone"?"снята":st==="active"?"активна, вне фильтра":"нет данных"}</em></div></div>`}
+  return `<div class="per"><span>${label}</span><div><b>${zl(l.total)}</b><i>${usd(l.total)}</i><em>в месяц</em></div><div class="g"><b>${zl(l.start)}</b><i>${usd(l.start)}</i><em>на старте</em></div></div>`}
+function pairCard(p,i){
+  const on=!!S.pairs[p.id],hid=!!S.hidden[p.id];
+  const ap=p.n?`<span class="chip ${p.status==="approved"?"ap":"good"}">#${p.n} ${p.status==="approved"?"одобрено":p.status==="mid"?"средняя":"принята"}</span>`:"";
+  const sst=p.ss?`<small class="ss" title="${p.ss===2?"Оба объявления подаёт один и тот же аккаунт.":"Квартиры рядом, а в объявлениях одинаковый длинный кусок текста — похоже, их сдаёт один продавец."}">👤 ${p.ss===2?"один продавец":"вероятно один продавец"}</small>`:"";
+  const mid=p.d!=null&&p.d<40?`<div class="mid"><b>🏢 один дом</b><small>${p.d} м между квартирами</small>${sst}</div>`
+           :p.walk!=null?`<div class="mid"><b>🚶 ${Math.max(1,Math.round(p.walk))} мин</b><small>${p.d} м между квартирами</small>${sst}</div>`
+           :p.d!=null?`<div class="mid"><b>${p.d} м</b><small>между квартирами</small>${sst}</div>`:"";
+  return `<section class="pair ${on?"picked":""}"><header>
+   <div class="h h1"><div class="rank">${p.n?"#"+p.n:"#"+(i+1)}</div>${per("Квартира 1",p.a)}</div>
+   <div class="h h2">${per("Квартира 2",p.b)}<div class="acts">${NEWP.has(p.id)?'<span class="chip good">🆕 новая</span>':""}${farChip(p)}${ap}<button class="btn star ${on?"on":""}" data-pstar="${p.id}" aria-pressed="${on}">${on?"★ В выборе":"☆ Нравится"}</button>
+    <button class="btn" data-phide="${p.id}" title="${hid?"Вернуть пару в списки":"Пара не подходит — убрать во вкладку «Скрытые»"}">${hid?"↩ Вернуть":"✕ Скрыть"}</button></div></div>${mid}</header>
+   ${hid&&S.hidden[p.id].note?`<div class="rec"><p>💬 ${esc(S.hidden[p.id].note)}</p></div>`:""}
+   ${p.swap?`<div class="rec swap"><b>🔄 Новая пара</b><p>${p.swap.was?`Была рекомендация «${esc(p.swap.was)}». `:""}Квартиру ${p.swap.keep===p.a?"справа":"слева"} подобрал вместо той, что ты скрыл. Квартира ${p.swap.keep===p.a?"слева":"справа"} — та же, что была.</p></div>`:""}
+   ${p.rec?`<div class="rec"><b>${esc(p.rec.title)}</b><p>👍 ${esc(p.rec.why)}</p>${p.rec.minus?`<p class="minus">⚠ ${esc(p.rec.minus)}</p>`:""}</div>`:""}
+   <div class="two">${aptCard(p.a,p.id)}${aptCard(p.b,p.id)}</div></section>`;
+}
+let P={};
+function pairsFor(t){
+  if(t==="top"||t==="map")return withSwaps(D.top.filter(p=>!S.hidden[p.id]));
+  if(t==="fresh")return withSwaps(D.fresh.filter(p=>!S.hidden[p.id]));
+  if(t==="approved")return D.approved.slice().sort((a,b)=>(b.status==="approved")-(a.status==="approved")||b.n-a.n);
+  if(t==="recs")return withSwaps(((RECS||{}).items||[]).map(r=>{const base=P[r.id]||{};
+    for(const [k,u] of [[r.a,r.a_url],[r.b,r.b_url]])if(!L[k])L[k]={id:k,url:u,gone:true,title:"",photos:[]};
+    return Object.assign({},base,{id:r.id,a:r.a,b:r.b,walk:base.walk??r.walk,d:base.d??r.d,rec:r,tag:"rec"})}));
+  if(t==="fav"){const f=favSrc(FAV);return byNew(f.pairs).map(id=>P[id]||restored(id,f.pairs[id])).filter(Boolean)}
+  if(t==="hidden")return Object.keys(S.hidden).map(id=>P[id]||restored(id,S.hidden[id])).filter(Boolean);
+  return [];
+}
+function restored(id,s){if(P[id])return P[id];s=s||{};const [a,b]=id.split("~");
+  for(const [k,u] of [[a,s.a],[b,s.b]])if(!L[k])L[k]={id:k,url:u,gone:true,title:"",photos:[]};
+  return {id,a:id.split("~")[0]===a?a:b,b:b,tag:"mine",n:s.n}}
+function listFor(noDist){
+  let ls=Object.entries(L).filter(([k,l])=>k===l.id&&!l.gone&&l.total&&!S.nope[l.id]).map(([,l])=>l);
+  const q=F.q.trim().toLowerCase();
+  if(q)ls=ls.filter(l=>(l.title+" "+l.street+" "+l.district).toLowerCase().includes(q));
+  if(+F.vis)ls=ls.filter(l=>(l.vis||0)>=+F.vis);
+  if(F.nb)ls=ls.filter(l=>(l.year||0)>=2018);
+  if(+F.max)ls=ls.filter(l=>l.total<=+F.max);
+  if(F.dist&&!noDist)ls=ls.filter(l=>l.dist===F.dist);
+  if(F.cc)ls=ls.filter(inCentre);
+  if(F.rooms==="2")ls=ls.filter(l=>nRooms(l)===2);else if(F.rooms==="3")ls=ls.filter(l=>nRooms(l)>=3);
+  if(F.bbig)ls=ls.filter(isBig);
+  if(F.b1500)ls=ls.filter(under1500);
+  if(F.bnew)ls=ls.filter(l=>NEWL.has(l.id));
+  return sortListings(ls);
+}
+const goneBox=()=>{if(!GONE.length)return `<details class="gonebox"><summary>🗑 Удалённые — объявление уже недоступно (0)</summary><small>Сюда попадают объявления, которых больше нет на сайте. Проверка идёт сама каждые 3 часа.</small></details>`;
+  return `<details class="gonebox" open><summary>🗑 Удалённые — объявление уже недоступно (${GONE.length})</summary><small>Автопроверка каждые 3 часа: если объявление недоступно два раза подряд, оно пропадает из пар и из базы и попадает сюда. Если оно вернётся — само вернётся в выдачу.</small>
+   <div class="gl">${GONE.slice(0,60).map(x=>`<div class="g">${x.photo?`<img loading="lazy" src="${esc(x.photo)}" alt="">`:`<div class="ph"></div>`}<div><b>${esc(x.title||"")}</b><small>${[x.m?x.m+" m²":"",x.total?zl(x.total)+"/мес":"",esc(x.where||"")].filter(Boolean).join(" · ")}<br>убрано ${fmtAt(x.at)}${(x.star||[]).length?` · было в ★ ${x.star.map(w=>WHO[w]||w).join(", ")}`:""} · <a href="${esc(x.url)}" target="_blank" rel="noopener">проверить</a></small></div></div>`).join("")}</div>${GONE.length>60?`<small>Показаны последние 60 из ${GONE.length}.</small>`:""}</details>`};
+const plural=(n,a,b,c)=>{const m=n%10,h=n%100;return `${n} ${m===1&&h!==11?a:m>=2&&m<=4&&(h<12||h>14)?b:c}`};
+function distSel(items,kind){            // dropdown with how many pairs/listings each district has (other filters applied)
+  const cnt={};for(const it of items){const ds=kind==="pairs"?new Set([it.a,it.b].map(id=>L[id]&&L[id].dist).filter(Boolean)):new Set([it.dist].filter(Boolean));
+    ds.forEach(d=>cnt[d]=(cnt[d]||0)+1)}
+  const word=kind==="pairs"?["пара","пары","пар"]:["квартира","квартиры","квартир"];
+  return `<label>Район <select id="f-dist"><option value="">все районы (${plural(items.length,...word)})</option>${[...(D.districts||[])].sort((x,y)=>(!cnt[x])-(!cnt[y])).map(d=>
+    `<option value="${d}" ${F.dist===d?"selected":""} ${cnt[d]?"":"disabled"}>${d} — ${plural(cnt[d]||0,...word)}</option>`).join("")}</select></label>`}
+const inDist=p=>!F.dist||[p.a,p.b].some(id=>L[id]&&L[id].dist===F.dist);
+function count(t){
+  if(t==="singles")return D.fresh_listings.filter(id=>!S.nope[id]).length;if(t==="base")return Object.entries(L).filter(([k,l])=>k===l.id&&!l.gone&&l.total&&!S.nope[l.id]).map(([,l])=>l).length;
+  if(t==="hidden")return pairsFor(t).length+Object.keys(S.nope).length+GONE.length;
+  if(t==="fav")return favCount("vlad")+favCount("kotik");return pairsFor(t).length}
+function renderTabs(){
+  $("#tabs").innerHTML=TABS.filter(([k])=>k!=="recs"||(RECS&&(RECS.items||[]).length)).map(([k,n])=>`<button class="${k===tab?"on":""}" data-tab="${k}">${n}<span class="n">${count(k)}</span>${(k==="top"||k==="fresh")&&newCount(k)?`<span class="n new" title="Новые с прошлого захода">+${newCount(k)}</span>`:""}</button>`).join("");
+}
+function baseFilters(ls){return `<div class="filters"><label>Поиск <input type="search" id="f-q" value="${esc(F.q)}" placeholder="улица, район, слово из заголовка"></label>
+     <label>Фото <select id="f-vis">${[["0","любые"],["3","от 3/5"],["4","от 4/5"]].map(([v,t])=>`<option value="${v}" ${F.vis===v?"selected":""}>${t}</option>`).join("")}</select></label>
+     ${distSel(listFor(true),"listings")}<label>Комнаты <select id="f-rooms">${[["","любые"],["2","2-комн."],["3","3-комн. и больше"]].map(([v,t])=>`<option value="${v}" ${F.rooms===v?"selected":""}>${t}</option>`).join("")}</select></label><label><input type="checkbox" id="f-cc" ${F.cc?"checked":""}> 📍 до 2 км от Дворца культуры</label><label><input type="checkbox" id="f-nb" ${F.nb?"checked":""}> только дома 2018+</label>
+     <label><input type="checkbox" id="f-bbig" ${F.bbig?"checked":""}> 📐 большие (от 55 м² или 3 комнаты)</label>
+     <label><input type="checkbox" id="f-b1500" ${F.b1500?"checked":""}> 💵 до $1 500 со всеми платежами</label>
+     <label><input type="checkbox" id="f-bnew" ${F.bnew?"checked":""}> 🆕 только новые${NEWL.size?` (${NEWL.size})`:""}</label>
+     <label>до <input type="number" id="f-max" value="${esc(F.max)}" placeholder="zł в месяц" style="width:110px"> zł/мес</label>
+     </div>
+     <div class="filters sorts"><span class="st">Сортировка (можно несколько):</span>${Object.entries(BSORT).map(([k,[t]])=>`<button class="btn ${F.bs.includes(k)?"star on":""}" data-bs="${k}" aria-pressed="${F.bs.includes(k)}">${t}</button>`).join("")}
+      <span class="st sorthint">Сейчас: ${F.bs.map(k=>BSORT_HINT[k]).join(" + ")}${F.bs.length>1?" — вместе, сверху те, что хороши по всем":""}.</span>
+      <span class="st">${plural(ls.length,"квартира","квартиры","квартир")}</span></div>`}
+const PAGE=20;
+function farChip(p){const q=id=>{const l=L[id];if(!l||l.gone)return null;const t=l.pt||[l.lat,l.lon];return t&&t[0]&&t[1]?t:null},a=q(p.a),b=q(p.b);if(!a||!b)return"";
+  const dm=Math.hypot((a[0]-b[0])*111000,(a[1]-b[1])*111000*Math.cos(52.2*Math.PI/180));
+  return dm>1500?`<span class="chip warn" title="Квартиры этой пары на карте далеко друг от друга — возможно, у одного из объявлений неверная метка. Проверь адрес в объявлении.">⚠ ${(dm/1000).toFixed(1)} км друг от друга</span>`:""}
+let NEWP=new Set(),NEWL=new Set();
+const newCount=k=>(D[k]||[]).filter(p=>NEWP.has(p.id)&&!S.hidden[p.id]&&noNope(p)).length;
+function render(){
+  if(tab!=="map")MAPBACK=null;
+  renderTabs();
+  let [,,hint]=TABS.find(t=>t[0]===tab);if(tab==="map"&&MAPMODE==="base")hint="Вся база на карте: каждая точка — одна квартира (🟢 фото 4–5, 🟡 3, 🔴 1–2 — мелкие и тусклые, серые — ещё не оценены). Нажми на точку — покажу её и всех соседей рядом с расстоянием, внизу список. Радиус меняется переключателем. Обводка: золотая — ★ Влада, розовая — ★ Котика. Показаны только квартиры в радиусе 2,5 км от Дворца культуры (круг на карте), 🏫 — школа. Фильтры — как во вкладке «Вся база».";let h=`<p class="hint">${hint}</p>`;const n=shown[tab]||PAGE;
+  if(tab==="singles"){const ids=D.fresh_listings.filter(id=>!S.nope[id]);h+=ids.length?`<div class="grid">${ids.slice(0,n).map(aptCard).join("")}</div>`:`<div class="empty">Сегодня новых или подешевевших нет.</div>`;
+    if(ids.length>n)h+=`<button class="btn more" data-more>Показать ещё (${ids.length-n})</button>`}
+  else if(tab==="base"){const ls=listFor();
+    h+=baseFilters(ls);
+    h+=`<div class="grid">${ls.slice(0,n).map(l=>aptCard(l.id)).join("")}</div>`;if(ls.length>n)h+=`<button class="btn more" data-more>Показать ещё (${ls.length-n})</button>`}
+  else if(tab==="map"&&MAPMODE==="base"){MAPBASE=listFor().filter(l=>kmPK(l)<=MAPR_MAX);h+=baseFilters(MAPBASE)+mapBlockBase(MAPBASE)}
+  else{const ps=pairsFor(tab);
+    if(tab==="fav"){const src=favSrc(FAV);const ap=byNew(src.apts);
+      h+=`<div class="filters favsw">${["vlad","kotik"].map(w=>`<button class="btn ${FAV===w?"star on":""}" data-fav="${w}">${w==="vlad"?"👤":"🐱"} ${WHO[w]} · ${favCount(w)}${w===ME?" (это ты)":""}</button>`).join("")}
+       <span class="st">${FAV===ME?"твой список — отмечай ☆ на парах и квартирах":api==="fb"?`список ${FAV==="vlad"?"Влада":"Котика"} — обновляется сам каждые полминуты`:ME==="vlad"?"список Котика — переносится сюда, когда пришлёшь мне её текст":"список Влада — обновляется вместе с сайтом"}</span></div>`;
+      if(RETIRED.length)h+=`<details class="retired"><summary>🗑 Недавно убрано — объявление уже снято (${RETIRED.length})</summary><ul>${RETIRED.slice(0,15).map(x=>`<li><b>${WHO[x.who]||x.who}</b> · ${fmtAt(x.at)} — ${esc(x.title)}${x.urls&&x.urls[0]?` · <a href="${esc(x.urls[0])}" target="_blank" rel="noopener">объявление</a>`:""}${x.kept?` <small>(соседняя квартира осталась в избранном отдельно)</small>`:""}</li>`).join("")}</ul><small>Объявления проверяются автоматически; если оно недоступно два раза подряд, я его убираю из списка. «В резерве» не убирается.</small></details>`;
+      if(!ps.length&&!ap.length)h+=`<div class="empty">${FAV===ME?"Пока пусто. Жми «☆ Нравится» на паре или «☆ квартира» на фото — они появятся здесь.":FAV==="kotik"?"Котик пока ничего не прислала.":"Влад пока ничего не отметил."}</div>`;
+      if(ps.length)h+=`<h3>Пары (${ps.length}) <small style="font-weight:400;color:var(--mut)">· сначала недавно добавленные</small></h3>`+ps.map((p,i)=>pairCard(p,i)).join("");
+      if(ap.length){ap.forEach(id=>{if(!L[id])L[id]={id,url:src.apts[id].url,gone:true,photos:[]}});h+=`<h3>Отдельные квартиры (${ap.length}) <small style="font-weight:400;color:var(--mut)">· сначала недавно добавленные</small></h3><p class="hint">Для каждой ★ квартиры я ищу пары при каждом обновлении базы. Жми «🔁 N пар» на фото — там все подходящие соседки; когда появится новая, кнопка появится или число вырастет.</p><div class="grid">${ap.map(id=>{const n=L[id]&&!L[id].gone?matesOf(id).length:0;
+        return `<div>${aptCard(id)}${n||!L[id]||L[id].gone?"":`<p class="hint" style="margin:6px 4px 0">⏳ Подходящей пары в базе пока нет — подберу, как только появится квартира рядом (до 15 мин пешком).</p>`}</div>`}).join("")}</div>`}}
+    else if(tab==="recs"){const R0=RECS||{},lg=(R0.log||[])[0];h+=`<p class="hint">Пересматриваю каждый день в 10:00 по твоим ★ и скрытым. Проверено: <b>${esc(R0.checked||R0.updated||"")}</b>${R0.note?` — ${esc(R0.note)}`:""}. Состав менялся: ${esc(R0.updated||"")}${lg?` (${lg.added.length?`добавил ${lg.added.length}`:""}${lg.added.length&&lg.dropped.length?", ":""}${lg.dropped.length?`убрал ${lg.dropped.length}`:""})`:""}. Порядок — мой: сверху самые сильные варианты.</p>`+ps.map((p,i)=>pairCard(p,i)).join("")}
+    else{const hist=tab==="approved";let fp=hist?ps:sortKeep(ps.filter(inDist).filter(pairPass));let dup=0;
+      if(F.pnew&&!hist)fp=fp.filter(p=>NEWP.has(p.id));
+      if(tab==="map")MAPALL=fp.slice();
+      if(F.puniq&&tab!=="hidden"&&!hist){const used=new Set(),keep=[];          // each apartment only in its best pair; the rest via 🔁
+        for(const p of fp){if(used.has(p.a)||used.has(p.b)){dup++;continue}used.add(p.a);used.add(p.b);keep.push(p)}fp=keep}
+      if(tab==="hidden"){const np=Object.keys(S.nope);np.forEach(id=>{if(!L[id])L[id]={id,url:S.nope[id].url,gone:true,title:"",photos:[]}});
+        h+=`<h3>Скрытые квартиры (${np.length})</h3>`+(np.length?`<div class="grid">${np.map(aptCard).join("")}</div>`:`<div class="empty">Отдельно скрытых квартир нет. Кнопка «✕ скрыть» на фото квартиры уберёт её и все пары с ней.</div>`)+`<h3>Скрытые пары (${ps.length})</h3>`+goneBox()}
+      if(!hist){
+      h+=`<div class="filters pf">${distSel(ps,"pairs")}
+        <label>до <select id="f-pwalk">${[["","15"],["10","10"],["5","5"]].map(([v,t])=>`<option value="${v}" ${F.pwalk===v?"selected":""}>${t}</option>`).join("")}</select> мин друг от друга</label>
+        <label><input type="checkbox" id="f-pnb" ${F.pnb?"checked":""}> обе новостройки 2018+</label>
+        <label>комнаты <select id="f-prooms">${[["","любые"],["2","обе 2-комн."],["3","обе 3-комн. и больше"],["13","хотя бы одна 3-комн."]].map(([v,t])=>`<option value="${v}" ${F.prooms===v?"selected":""}>${t}</option>`).join("")}</select></label>
+        <label><input type="checkbox" id="f-pbig" ${F.pbig?"checked":""}> 📐 обе большие (от 55 м² или 3 комнаты)</label>
+        <label><input type="checkbox" id="f-p1500" ${F.p1500?"checked":""}> 💵 каждая до $1 500 со всеми платежами</label>
+        <label><input type="checkbox" id="f-pc" ${F.pc?"checked":""}> 📍 обе до 2 км от Дворца культуры</label>
+        <label><input type="checkbox" id="f-pnew" ${F.pnew?"checked":""}> 🆕 только новые${NEWP.size?` (${newCount(tab==="fresh"?"fresh":"top")})`:""}</label>
+        ${tab!=="hidden"?`<label title="Каждая квартира показывается один раз — в своей лучшей паре. Остальные пары с ней — кнопка 🔁 на фото."><input type="checkbox" id="f-puniq" ${F.puniq?"checked":""}> 🧹 без повторов квартир</label>`:""}</div>
+       <div class="filters sorts"><span class="st">Сортировка (можно несколько):</span>${Object.entries(PSORT).map(([k,[t]])=>`<button class="btn ${F.ps.includes(k)?"star on":""}" data-ps="${k}" aria-pressed="${F.ps.includes(k)}">${t}</button>`).join("")}
+        <span class="st sorthint">Сейчас: ${F.ps.filter(k=>PSORT[k]).map(k=>PSORT_HINT[k]).join(" + ")}${F.ps.length>1?" — вместе, сверху те, что хороши по всем":""}.</span>
+       <span class="st">${plural(fp.length,"пара","пары","пар")}${dup?` (ещё ${dup} — с теми же квартирами, смотри 🔁 на фото)`:""}${F.dist?` — хотя бы одна квартира в районе ${F.dist}`:""}</span></div>`;}
+      else h+=`<p class="hint">Это история — показываю все одобренные пары без фильтров, сначала одобренные.</p>`;
+      h+=tab==="map"?mapBlock(fp):fp.length?fp.slice(0,n).map((p,i)=>pairCard(p,i)).join(""):ps.length?`<div class="empty">Все ${plural(ps.length,"пара","пары","пар")} скрыты фильтрами выше.<br><button class="btn star on" type="button" data-pfreset style="margin-top:10px">Сбросить фильтры</button></div>`:`<div class="empty">${tab==="hidden"?"Скрытых пар нет.":"Пар нет."}</div>`;
+      if(fp.length>n&&tab!=="map")h+=`<button class="btn more" data-more>Показать ещё (${fp.length-n})</button>`}}
+  $("#main").innerHTML=h;
+  if(tab==="map"){const so=document.querySelector(".filters.sorts");if(so)so.style.display="none";      // sorting means nothing on a map
+    const pf=document.querySelector(MAPMODE==="base"?".filters:not(.sorts)":".filters.pf");if(pf){const d=document.createElement("details");d.className="mapfilters";d.open=MAPFOPEN;
+      d.innerHTML="<summary>⚙ Фильтры</summary>";pf.parentNode.insertBefore(d,pf);d.appendChild(pf);d.addEventListener("toggle",()=>{MAPFOPEN=d.open})}
+    MAPMODE==="base"?initMapBase():initMap()}
+  if(MATES)renderMates();
+}
+let MATES=null;
+let RETIRED=[],GONE=[];
+const fmtAt=a=>String(a||"").slice(8,10)+"."+String(a||"").slice(5,7)+" "+String(a||"").slice(11,16);
+function retiredToast(){if(!RETIRED.length)return;let seenAt="";try{seenAt=localStorage.getItem("wr_retired_seen")||""}catch(_){}
+  const fresh=RETIRED.filter(x=>String(x.at)>seenAt);if(!fresh.length)return;
+  toast(`🗑 Объявление снято — убрал из избранного (${fresh.map(x=>WHO[x.who]).filter((v,i,a)=>a.indexOf(v)===i).join(", ")}): ${fresh.slice(0,3).map(x=>x.title.slice(0,40)).join("; ")}${fresh.length>3?` и ещё ${fresh.length-3}`:""}. Список — в «★ Избранное» внизу.`);
+  try{localStorage.setItem("wr_retired_seen",RETIRED.reduce((m,x)=>String(x.at)>m?String(x.at):m,""))}catch(_){}}
+const MAPR_MAX=2.5;                    // «Вся база» on the map: only flats within 2.5 km of the Palace of Culture
+let MAPMODE="pairs",MAPSELB=null,MAPCARD=null,MAPBASE=[],MAPRAD=800;
+try{MAPMODE=localStorage.getItem("wr_mapmode")==="base"?"base":"pairs";MAPRAD=+localStorage.getItem("wr_maprad")||800}catch(_){}
+let MAPFOCUS=null,MAPBACK=null,MAPFOPEN=false,MAP=null,MAPVIEW=null,MAPSEL=null,MAPSELU=null,MAPALL=[],MAPU={};
+const aptPt=id=>{const l=L[id];if(!l||l.gone)return null;const q=l.pt||[l.lat,l.lon];return q&&q[0]&&q[1]?q:null};
+const mcol=l=>l&&l.vis>=4?"#3ecf8e":l&&l.vis===3?"#e3b341":"#8b949e";
+const tcol=p=>{const va=(L[p.a]||{}).vis,vb=(L[p.b]||{}).vis;return va>=4&&vb>=4?"#3ecf8e":(va===3||vb===3)?"#e3b341":"#8b949e"};
+function buildUnits(){MAPU={};const seen=new Set();
+  const addp=p=>{if(!p||seen.has(p.id)||!aptPt(p.a)||!aptPt(p.b))return;seen.add(p.id);for(const k of [p.a,p.b])(MAPU[k]=MAPU[k]||{pairs:[],ring:null}).pairs.push(p)};
+  const ring=(id,c)=>{if(MAPU[id]&&!MAPU[id].ring)MAPU[id].ring=c};
+  MAPALL.forEach(addp);
+  for(const [who,c] of [["vlad","#f5c518"],["kotik","#ff6fae"]]){let f={};try{f=favSrc(who)||{}}catch(_){}
+    for(const id of Object.keys(f.pairs||{})){const p=P[id];if(p){addp(p);ring(p.a,c);ring(p.b,c)}}}
+  for(const r of ((RECS||{}).items||[])){const p=P[r.id];if(p){addp(p);ring(p.a,"#a371f7");ring(p.b,"#a371f7")}}}
+function mapBlock(fp){buildUnits();
+  if(MAPFOCUS&&aptPt(MAPFOCUS.id)){const f=MAPFOCUS;                       // the flat the user came from is always on the map, with its pairs
+    const addf=q=>{if(q&&aptPt(q.a)&&aptPt(q.b))for(const k of [q.a,q.b])(MAPU[k]=MAPU[k]||{pairs:[],ring:null}).pairs.some(x=>x.id===q.id)||MAPU[k].pairs.push(q)};
+    (MAPU[f.id]=MAPU[f.id]||{pairs:[],ring:null});(byApt()[f.id]||[]).filter(q=>noNope(q)&&!S.hidden[q.id]).forEach(addf);if(f.pair)addf(P[f.pair])}
+  return `<div class="maptools">${modeSw()}${MAPBACK?`<button class="btn star on" type="button" data-mapback>← назад к списку</button>`:""}<button class="btn" type="button" data-mapfit>⤢ Показать все</button><span class="st">${plural(Object.keys(MAPU).length,"квартира","квартиры","квартир")} · ${plural(MAPALL.length,"пара","пары","пар")}</span></div>
+   <div class="mapwrap"><div id="mapbox"></div></div>
+   <div id="mapsel" class="mapsel">${MAPSEL&&P[MAPSEL]?pairCard(P[MAPSEL],0):`<p class="hint">Нажми на точку на карте — покажу её пары. «Подробнее ↓» в списке пар открывает полную карточку здесь.</p>`}</div>`}
+const modeSw=()=>`<span class="modesw"><button class="btn ${MAPMODE==="pairs"?"star on":""}" type="button" data-mapmode="pairs">🔗 Пары</button><button class="btn ${MAPMODE==="base"?"star on":""}" type="button" data-mapmode="base">🏠 Вся база</button></span>`;
+const bcol=l=>!l?"#8b949e":l.vis>=4?"#3ecf8e":l.vis===3?"#e3b341":l.vis?"#da3633":"#8b949e";
+const mDist=(a,b)=>Math.hypot((a[0]-b[0])*111000,(a[1]-b[1])*111000*Math.cos(52.2*Math.PI/180));
+function mapBlockBase(ls){
+  return `<div class="maptools">${modeSw()}${MAPBACK?`<button class="btn star on" type="button" data-mapback>← назад к списку</button>`:""}<button class="btn" type="button" data-mapfit>⤢ Показать все</button>
+   <label class="st">соседи в радиусе <select id="maprad">${[300,500,800,1200,2000].map(r=>`<option value="${r}" ${MAPRAD===r?"selected":""}>${r<1000?r+" м":(r/1000)+" км"}</option>`).join("")}</select></label>
+   <span class="st">${plural(ls.length,"квартира","квартиры","квартир")} в радиусе 2,5 км от Дворца культуры · <span style="color:#3ecf8e">●</span> фото 4–5 <span style="color:#e3b341">●</span> 3 <span style="color:#da3633">●</span> 1–2 <span style="color:#8b949e">●</span> без оценки</span></div>
+   <div class="mapwrap"><div id="mapbox"></div></div>
+   <div id="mapsel" class="mapsel"><p class="hint">Нажми на точку — покажу квартиру и всех соседей рядом. Фильтры выше работают и на карте.</p></div>`}
+function basePop(id){const l=L[id]||{},r=nRooms(l),s=l.sch||{};
+  return `<div class="mp"><div class="mp-head"><img src="${esc((l.photos||[])[0]||"")}" alt=""><div><b>${zl(l.total||0)}</b> <small>${usd(l.total||0)}</small><br><small>${esc(l.dist||l.district||"")} · ${l.m} м²${r?` · ${r}к`:""}${l.vis?` · фото ${l.vis}/5`:""}</small><br><small>${SRC[l.src]||""}${s.walk!=null?` · 🏫 🚶 ${Math.round(s.walk)} мин`:""}</small></div>
+    <button class="btn star pstar ${S.apts[id]?"on":""}" data-astar="${id}" title="${S.apts[id]?"Убрать из избранного":"В избранное (отдельная квартира)"}" aria-pressed="${!!S.apts[id]}">${S.apts[id]?"★":"☆"}</button></div>
+   <div class="mp-btns3"><button class="btn" data-anope="${id}" title="Скрыть квартиру и все пары с ней">✕ скрыть</button><a class="btn" href="${esc(l.url||"#")}" target="_blank" rel="noopener" data-seen="${id}">↗ открыть</a><button class="btn" data-mapcard="${id}" title="Полная карточка квартиры под картой">↓ подробнее</button></div></div>`}
+function initMapBase(){
+  ensureLeaflet(LF=>{
+    const el=$("#mapbox");if(!el||tab!=="map"||MAPMODE!=="base")return;
+    if(MAP){try{MAP.off();MAP.remove()}catch(_){}MAP=null}
+    MAP=LF.map(el,{preferCanvas:true}).setView([52.2318,21.006],12);
+    LF.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"© OpenStreetMap"}).addTo(MAP);
+    const gBase=LF.layerGroup(),gApt=LF.layerGroup(),gCtr=LF.layerGroup(),gSel=LF.layerGroup(),pts=[],pt=new Map();
+    const ring={};for(const [who,c] of [["vlad","#f5c518"],["kotik","#ff6fae"]]){let f={};try{f=favSrc(who)||{}}catch(_){}
+      for(const id of Object.keys(f.apts||{}))ring[id]=ring[id]||c;
+      for(const id of Object.keys(f.pairs||{}))id.split("~").forEach(x=>{ring[x]=ring[x]||c})}
+    const tip=LF.tooltip({direction:"top",offset:[0,-6]});
+    const line=l=>`${zl(l.total||0)} · ${l.m} м²${nRooms(l)?` · ${nRooms(l)}к`:""}${l.vis?` · фото ${l.vis}/5`:""}`;
+    const select=(id,fit,card)=>{const q=pt.get(id),l=L[id];if(!q||!l)return;const showCard=!!card||MAPCARD===id;
+      LF.popup({maxWidth:380,minWidth:290,autoPanPadding:[20,70]}).setLatLng(q).setContent(basePop(id)).openOn(MAP);   // first: it closes the previous popup (whose popupclose clears the selection)
+      MAPSELB=id;MAPCARD=showCard?id:null;gSel.clearLayers();
+      LF.circle(q,{radius:MAPRAD,color:"#58a6ff",weight:1.5,fillOpacity:.06,dashArray:"5 5",interactive:false}).addTo(gSel);
+      const nb=MAPBASE.filter(o=>o.id!==id&&pt.has(o.id)).map(o=>[o,mDist(q,pt.get(o.id))]).filter(x=>x[1]<=MAPRAD).sort((a,b)=>a[1]-b[1]);
+      for(const [o] of nb)LF.circleMarker(pt.get(o.id),{radius:8,color:"#fff",weight:2,fillColor:bcol(o),fillOpacity:1}).addTo(gSel)
+        .on("click",e=>{LF.DomEvent.stopPropagation(e);select(o.id)}).bindTooltip(line(o));
+      LF.circleMarker(q,{radius:10,color:"#fff",weight:3,fillColor:bcol(l),fillOpacity:1}).addTo(gSel);
+      if(fit&&nb.length)MAP.fitBounds(LF.latLngBounds([q,...nb.slice(0,40).map(x=>pt.get(x[0].id))]),{padding:[60,60],maxZoom:16});
+      $("#mapsel").innerHTML=(showCard?`<div class="mapcard">${aptCard(id)}</div>`:"")+`<h3>Рядом с выбранной (до ${MAPRAD<1000?MAPRAD+" м":(MAPRAD/1000)+" км"}): ${nb.length}</h3>`+(nb.length?`<div class="nbl">${nb.slice(0,40).map(([o,d])=>{const r=nRooms(o);
+        return `<div class="nb-row" data-nbsel="${o.id}"><img src="${esc((o.photos||[])[0]||"")}" alt="" loading="lazy"><div><b>${zl(o.total||0)}</b> <small>${usd(o.total||0)}</small><br><small>${esc(o.dist||o.district||"")} · ${o.m} м²${r?` · ${r}к`:""}${o.vis?` · фото ${o.vis}/5`:""} · <b>${Math.round(d)} м</b></small></div>
+         <div class="mp-btns"><button class="btn star ${S.apts[o.id]?"on":""}" data-astar="${o.id}" title="Отметить квартиру">${S.apts[o.id]?"★":"☆"}</button><a class="btn" href="${esc(o.url||"#")}" target="_blank" rel="noopener" title="Открыть объявление" data-seen="${o.id}">↗</a><button class="btn" data-mapcard="${o.id}" title="Полная карточка под картой">↓</button></div></div>`}).join("")}</div>${nb.length>40?`<small class="hint">Показаны 40 ближайших из ${nb.length}.</small>`:""}`
+        :`<div class="empty">В этом радиусе других квартир с такими фильтрами нет. Увеличь радиус или ослабь фильтры.</div>`);
+      if(card)setTimeout(()=>{const m=document.querySelector("#mapsel .mapcard");if(m)scrollTo({top:m.getBoundingClientRect().top+scrollY-72,behavior:"smooth"})},120)};
+    window.__selB=select;
+    const rank=l=>l.vis>=4?3:l.vis===3?2:l.vis?0:1;                      // draw order: dated / unrated first, good ones on top
+    for(const l of MAPBASE.slice().sort((a,b)=>rank(a)-rank(b))){const q=aptPt(l.id);if(!q)continue;pt.set(l.id,q);pts.push(q);const rc=ring[l.id],good=l.vis>=4,dim=!l.vis||l.vis<=2;
+      LF.circleMarker(q,{radius:rc?7:good?6:dim?3.5:5,color:rc||"#0d1117",weight:rc?3:.8,fillColor:bcol(l),fillOpacity:good?.95:dim?.4:.85}).addTo(gBase)
+        .on("click",e=>{LF.DomEvent.stopPropagation(e);select(l.id)})
+        .on("mouseover",e=>{tip.setLatLng(e.latlng).setContent(line(l)).openOn(MAP)}).on("mouseout",()=>MAP.closeTooltip(tip))}
+    for(const [who] of [["vlad"],["kotik"]]){let f={};try{f=favSrc(who)||{}}catch(_){}
+      for(const id of Object.keys(f.apts||{})){const q=pt.get(id);if(q)LF.marker(q,{icon:LF.divIcon({html:"⭐",className:"mk-star",iconSize:[22,22]})}).addTo(gApt).bindTooltip(`⭐ ${who==="vlad"?"Влад":"Котик"}: ${((L[id]||{}).title||"").slice(0,50)}`)
+        .on("click",e=>{LF.DomEvent.stopPropagation(e);select(id)})}}
+    LF.circle([52.2318,21.006],{radius:MAPR_MAX*1000,color:"#58a6ff",weight:1.5,fillOpacity:.03,dashArray:"6 6",interactive:false}).addTo(gCtr);
+    LF.marker([52.237745,21.0132196],{icon:LF.divIcon({html:"🏫",className:"mk-star",iconSize:[22,22]}),interactive:false}).addTo(gCtr);
+    for(const g of [gCtr,gBase,gApt,gSel])g.addTo(MAP);
+    LF.control.layers(null,{"Квартиры (вся база)":gBase,"⭐ ★-квартиры":gApt,"Круг 2,5 км · школа":gCtr},{collapsed:window.innerWidth<700}).addTo(MAP);
+    if(MAPVIEW)MAP.setView(MAPVIEW.c,MAPVIEW.z);else if(pts.length)MAP.fitBounds(pts,{padding:[30,30],maxZoom:14});
+    if(MAPFOCUS){const f=MAPFOCUS;MAPFOCUS=null;const q=pt.get(f.id);if(q){MAP.setView(q,16);select(f.id);
+      setTimeout(()=>{const bx=$("#mapbox");if(bx)scrollTo({top:bx.getBoundingClientRect().top+scrollY-72,behavior:"smooth"})},150)}}
+    else if(MAPSELB&&pt.has(MAPSELB))select(MAPSELB);
+    MAP.on("popupclose",()=>{gSel.clearLayers();MAPSELB=null;MAPCARD=null;const m=$("#mapsel");if(m)m.innerHTML=`<p class="hint">Нажми на точку — покажу квартиру и всех соседей рядом. Фильтры выше работают и на карте.</p>`});
+    MAP.on("moveend",()=>{MAPVIEW={c:MAP.getCenter(),z:MAP.getZoom()}});
+    setTimeout(()=>{try{MAP.invalidateSize()}catch(_){}},200);
+    try{new ResizeObserver(()=>{try{MAP&&MAP.invalidateSize()}catch(_){}}).observe(el)}catch(_){}})}
+function ensureLeaflet(cb){
+  if(window.L&&window.L.map){cb(window.L);return}
+  if(!document.getElementById("lfcss")){const c=document.createElement("link");c.id="lfcss";c.rel="stylesheet";c.href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css";document.head.appendChild(c)}
+  if(window.__lfq){window.__lfq.push(cb);return}
+  window.__lfq=[cb];const sc=document.createElement("script");sc.src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js";
+  sc.onload=()=>{const q=window.__lfq;window.__lfq=null;q.forEach(f=>f(window.L))};
+  sc.onerror=()=>{window.__lfq=null;const b=$("#mapbox");if(b)b.innerHTML='<div class="empty">Не удалось загрузить карту (нет интернета?)</div>'};
+  document.head.appendChild(sc)}
+function unitPop(id){const l=L[id]||{};const r=x=>nRooms(x);
+  const info=x=>`${esc(x.dist||x.district||"")} · ${x.m} м²${r(x)?` · ${r(x)}к`:""}${x.vis?` · фото ${x.vis}/5`:""}`;
+  const ps=(MAPU[id]||{pairs:[]}).pairs.slice().sort((a,b)=>(tcol(b)==="#3ecf8e")-(tcol(a)==="#3ecf8e")||((a.walk??99)-(b.walk??99)));
+  const items=ps.map(p=>{const o=p.a===id?p.b:p.a,ol=L[o]||{},on=!!S.pairs[p.id];
+    return `<div class="mp-pair"><img src="${esc((ol.photos||[])[0]||"")}" alt=""><div><b>${zl(ol.total||0)}</b> <small>${usd(ol.total||0)}</small><br><small>${info(ol)}${p.walk!=null?` · 🚶 ${Math.max(1,Math.round(p.walk))} мин`:(()=>{const x=aptPt(id),y=aptPt(o);if(!x||!y)return"";const dm=Math.hypot((x[0]-y[0])*111000,(x[1]-y[1])*111000*Math.cos(52.2*Math.PI/180));return dm>1500?` · <span style="color:var(--warn)">⚠ ${(dm/1000).toFixed(1)} км по прямой</span>`:` · ≈ ${Math.round(dm)} м по прямой`})()}</small></div>
+     <div class="mp-btns"><button class="btn star ${on?"on":""}" data-pstar="${p.id}" title="Нравится пара">${on?"★":"☆"}</button><button class="btn" data-phide="${p.id}" title="Скрыть пару">✕</button><button class="btn" data-mapdetail="${p.id}" title="Полная карточка пары">↓</button><a class="btn" href="${esc(ol.url||"#")}" target="_blank" rel="noopener" title="Открыть объявление в новой вкладке">↗</a></div></div>`}).join("");
+  return `<div class="mp"><div class="mp-head"><img src="${esc((l.photos||[])[0]||"")}" alt=""><div><b>${zl(l.total||0)}</b> <small>${usd(l.total||0)}</small><br><small>${info(l)} · ${SRC[l.src]||""}</small></div>
+   <div class="mp-btns"><a class="btn" href="${esc(l.url||"#")}" target="_blank" rel="noopener" title="Открыть объявление в новой вкладке">↗ открыть</a></div></div>
+   <div class="mp-title">${plural(ps.length,"пара","пары","пар")} с этой квартирой:</div><div class="mp-list">${items||"<small>пар нет</small>"}</div></div>`}
+function initMap(){
+  ensureLeaflet(LF=>{
+    const el=$("#mapbox");if(!el||tab!=="map")return;
+    if(MAP){try{MAP.off();MAP.remove()}catch(_){}MAP=null}
+    MAP=LF.map(el,{preferCanvas:true}).setView([52.2318,21.006],12);
+    LF.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"© OpenStreetMap"}).addTo(MAP);
+    const gDots=LF.layerGroup(),gLines=LF.layerGroup(),gApt=LF.layerGroup(),gCtr=LF.layerGroup(),gSel=LF.layerGroup(),pts=[];
+    const selectUnit=id=>{const u=MAPU[id],q=aptPt(id);if(!u||!q)return;
+      LF.popup({maxWidth:360,autoPanPadding:[20,70]}).setLatLng(q).setContent(unitPop(id)).openOn(MAP);   // opens first: it closes the previous popup (which clears the selection)
+      MAPSELU=id;gSel.clearLayers();
+      for(const p of u.pairs){const o=p.a===id?p.b:p.a,oq=aptPt(o);if(!oq)continue;
+        LF.polyline([q,oq],{color:tcol(p),weight:5,opacity:.95}).addTo(gSel);
+        LF.circleMarker(oq,{radius:9,color:"#fff",weight:2.5,fillColor:mcol(L[o]),fillOpacity:1}).addTo(gSel).on("click",e=>{LF.DomEvent.stopPropagation(e);selectUnit(o)})}
+      LF.circleMarker(q,{radius:11,color:"#fff",weight:3,fillColor:mcol(L[id]),fillOpacity:1}).addTo(gSel)};
+    for(const id of Object.keys(MAPU)){const q=aptPt(id),u=MAPU[id],l=L[id];pts.push(q);
+      LF.circleMarker(q,{radius:u.ring?8:6,color:u.ring||"#fff",weight:u.ring?3.5:1.5,fillColor:mcol(l),fillOpacity:1}).addTo(gDots)
+        .on("click",e=>{LF.DomEvent.stopPropagation(e);selectUnit(id)}).bindTooltip(`${zl(l.total||0)} · ${l.m} м² · ${plural(u.pairs.length,"пара","пары","пар")}`);
+      for(const p of u.pairs)if(p.a===id){const b=aptPt(p.b);if(b)LF.polyline([q,b],{color:tcol(p),weight:2.5,opacity:.6}).addTo(gLines)}}
+    for(const [who] of [["vlad"],["kotik"]]){let f={};try{f=favSrc(who)||{}}catch(_){}
+      for(const id of Object.keys(f.apts||{})){const q=aptPt(id);if(q){pts.push(q);
+        LF.marker(q,{icon:LF.divIcon({html:"⭐",className:"mk-star",iconSize:[22,22]})}).addTo(gApt).bindTooltip(`⭐ ${who==="vlad"?"Влад":"Котик"}: ${((L[id]||{}).title||"").slice(0,50)}`)
+          .on("click",e=>{LF.DomEvent.stopPropagation(e);if(MAPU[id])selectUnit(id)})}}}
+    LF.circle([52.2318,21.006],{radius:2000,color:"#58a6ff",weight:1.5,fillOpacity:.04,dashArray:"6 6",interactive:false}).addTo(gCtr);
+    LF.marker([52.237745,21.0132196],{icon:LF.divIcon({html:"🏫",className:"mk-star",iconSize:[22,22]}),interactive:false}).addTo(gCtr);
+    for(const g of [gCtr,gDots,gApt,gSel])g.addTo(MAP);
+    LF.control.layers(null,{"Квартиры":gDots,"Линии всех пар":gLines,"⭐ ★-квартиры":gApt,"Круг 2 км · школа":gCtr},{collapsed:window.innerWidth<700}).addTo(MAP);
+    if(MAPVIEW)MAP.setView(MAPVIEW.c,MAPVIEW.z);else if(pts.length)MAP.fitBounds(pts,{padding:[30,30],maxZoom:14});
+    if(MAPFOCUS){const f=MAPFOCUS;MAPFOCUS=null;const q=aptPt(f.id);
+      if(q){const fp2=[q];if(f.pair&&P[f.pair]){const o=P[f.pair].a===f.id?P[f.pair].b:P[f.pair].a,oq=aptPt(o);if(oq)fp2.push(oq)}
+        if(fp2.length>1)MAP.fitBounds(fp2,{padding:[70,70],maxZoom:16});else MAP.setView(q,16);
+        if(MAPU[f.id])selectUnit(f.id);
+        setTimeout(()=>{const bx=$("#mapbox");if(bx)scrollTo({top:bx.getBoundingClientRect().top+scrollY-72,behavior:"smooth"})},150)}}
+    else if(MAPSELU&&MAPU[MAPSELU])selectUnit(MAPSELU);
+    MAP.on("popupclose",()=>{gSel.clearLayers();MAPSELU=null});
+    MAP.on("moveend",()=>{MAPVIEW={c:MAP.getCenter(),z:MAP.getZoom()}});
+    setTimeout(()=>{try{MAP.invalidateSize()}catch(_){}},200);
+    try{new ResizeObserver(()=>{try{MAP&&MAP.invalidateSize()}catch(_){}}).observe(el)}catch(_){}})}
+document.addEventListener("click",e=>{
+  const bsb=e.target.closest("[data-bs]");if(bsb){const k=bsb.dataset.bs;
+    F.bs=F.bs.includes(k)?F.bs.filter(x=>x!==k):(F.bs.length===1&&F.bs[0]==="score"?[k]:[...F.bs,k]);    // first pick replaces the default
+    const opp={month:"pricey",pricey:"month"}[k];if(opp&&F.bs.includes(k))F.bs=F.bs.filter(x=>x!==opp);
+    if(!F.bs.length)F.bs=["score"];try{localStorage.setItem("wr_bs",JSON.stringify(F.bs))}catch(_){}shown.base=PAGE;render();return}
+  const gd=e.target.closest("[data-gonedel]");if(gd){const id=gd.dataset.gonedel,pid=gd.dataset.gonepair,who=gd.dataset.gonewho;
+    if(who){const src=favSrc(who)||{},up={_t:Date.now()};      // other person's shared list: remove only this dead entry (key-level PATCH)
+      if(pid){up["pairs/"+pid]=null;delete (src.pairs||{})[pid]}if((src.apts||{})[id]){up["apts/"+id]=null;delete src.apts[id]}
+      fetch(fbUrl(who),{method:"PATCH",body:JSON.stringify(up)}).then(r=>{if(!r.ok)throw 0;toast("Убрал из списка "+WHO[who])}).catch(()=>toast("Не получилось убрать — проверь интернет"));
+      render();return}
+    if(pid)delete S.pairs[pid];if(S.apts[id])delete S.apts[id];save();render();toast("Убрал из избранного");return}
+  const om=e.target.closest("[data-onmap]");if(om){MAPFOCUS={id:om.dataset.onmap,pair:om.dataset.onmappair||null};if(tab!=="map")MAPBACK={tab,y:scrollY};
+    if(MATES)closeMates();MAPMODE=((tab==="base"||(tab==="map"&&MAPMODE==="base"))&&!om.dataset.onmappair)?"base":"pairs";try{localStorage.setItem("wr_mapmode",MAPMODE)}catch(_){}MAPSELB=null;tab="map";try{localStorage.setItem("wr_tab","map")}catch(_){}MAPVIEW=null;MAPSELU=null;render();scrollTo(0,0);return}
+  const mb=e.target.closest("[data-mapback]");if(mb){const b=MAPBACK;MAPBACK=null;tab=b?b.tab:"top";try{localStorage.setItem("wr_tab",tab)}catch(_){}render();scrollTo(0,b?b.y:0);return}
+  const mm=e.target.closest("[data-mapmode]");if(mm){MAPMODE=mm.dataset.mapmode==="base"?"base":"pairs";try{localStorage.setItem("wr_mapmode",MAPMODE)}catch(_){}MAPSELU=null;MAPSELB=null;render();return}
+  const mcd=e.target.closest("[data-mapcard]");if(mcd){const id=mcd.dataset.mapcard;if(window.__selB){const q=aptPt(id);window.__selB(id,false,true)}return}
+  const nbs=e.target.closest("[data-nbsel]");if(nbs&&!e.target.closest("button,a")){if(window.__selB)window.__selB(nbs.dataset.nbsel);return}
+  if(e.target.closest("[data-mapfit]")){MAPVIEW=null;MAPSELU=null;MAPSELB=null;MAPMODE==="base"?initMapBase():initMap();return}
+  const d=e.target.closest("[data-mapdetail]");if(d){MAPSEL=d.dataset.mapdetail;const p=P[MAPSEL];
+    if(p){$("#mapsel").innerHTML=pairCard(p,0);$("#mapsel").scrollIntoView({behavior:"smooth",block:"start"})}}});
+function renderMates(){const l=L[MATES]||{};      // the chosen apartment always on the left, its possible partners on the right
+  const ps=sortPairs(matesOf(MATES)).map(p=>p.a===MATES?p:Object.assign({},p,{a:p.b,b:p.a}));
+  $("#matesttl").textContent=`Все пары с квартирой: ${l.title||""}`;
+  $("#matessub").textContent=`${[l.dist||l.district,l.m?l.m+" m²":"",l.total?zl(l.total)+"/мес":""].filter(Boolean).join(" · ")} — ${plural(ps.length,"пара","пары","пар")}, сортировка как в списке, фильтры не применяются. Слева всегда эта квартира, справа — подходящие ей соседки: понравилась пара — жми «☆ Нравится».`;
+  $("#matesbody").innerHTML=ps.map((p,i)=>pairCard(p,i)).join("")||`<div class="empty">Других пар с этой квартирой нет.</div>`}
+function openMates(id){MATES=id;renderMates();$("#matesbox").hidden=false;$("#matesbox").scrollTop=0;document.body.style.overflow="hidden"}
+function closeMates(){MATES=null;$("#matesbox").hidden=true;document.body.style.overflow=""}
+document.addEventListener("click",e=>{
+  const fv=e.target.closest("[data-fav]");if(fv){FAV=fv.dataset.fav;render();return}
+  const sp=e.target.closest("[data-ps]");if(sp){const k=sp.dataset.ps;
+    F.ps=F.ps.includes(k)?F.ps.filter(x=>x!==k):(F.ps.length===1&&F.ps[0]==="score"?[k]:[...F.ps,k]);   // first pick replaces the default
+    const opp={month:"pricey",pricey:"month"}[k];if(opp&&F.ps.includes(k))F.ps=F.ps.filter(x=>x!==opp);   // cheaper vs pricier: one at a time
+    if(!F.ps.length)F.ps=["score"];savePF();shown[tab]=PAGE;render();return}
+  const rs=e.target.closest("[data-pfreset]");if(rs){Object.assign(F,{dist:"",pwalk:"",pmax:"",pvis:"0",pnb:false,pbig:false,p1500:false,pc:false,prooms:""});savePF();shown[tab]=PAGE;render();return}
+  const t=e.target.closest("[data-tab],[data-pstar],[data-phide],[data-astar],[data-anope],[data-mates],[data-more],[data-sw],[data-z],[data-seen]");if(!t)return;
+  if(t.dataset.tab){tab=t.dataset.tab;try{localStorage.setItem("wr_tab",tab)}catch(_){}render();scrollTo(0,0)}
+  else if(t.dataset.pstar)togglePair(P[t.dataset.pstar]||restored(t.dataset.pstar,S.pairs[t.dataset.pstar]||S.hidden[t.dataset.pstar]));
+  else if(t.dataset.phide){const p=P[t.dataset.phide]||restored(t.dataset.phide,S.hidden[t.dataset.phide]||S.pairs[t.dataset.phide]);S.hidden[p.id]?hidePair(p):askWhy("pair",p)}
+  else if(t.dataset.mates)openMates(t.dataset.mates);
+  else if(t.dataset.astar)toggleApt(t.dataset.astar);
+  else if(t.dataset.anope){const id=t.dataset.anope;S.nope[id]?nopeApt(id):askWhy("apt",id)}
+  else if("more" in t.dataset){shown[tab]=(shown[tab]||PAGE)+PAGE;render()}
+  else if("sw" in t.dataset){const g=t.closest(".gal");const m=g.querySelector(".main");const mi=m.dataset.z,ti=t.dataset.sw;
+    const s=m.src;m.src=t.src;t.src=s;m.dataset.z=ti;t.dataset.sw=mi}
+  else if("z" in t.dataset)openBox(t.closest(".gal").dataset.gid,+t.dataset.z);
+  else if(t.dataset.seen)seen(t.dataset.seen);
+});
+function picksText(){
+  const line=l=>l&&!l.gone?`${l.title} — ${zl(l.total)}/мес (${usd(l.total)}), на старте ${zl(l.start)}${l.dist?", "+l.dist:""}\n   ${l.url}`:`   ${l?l.url:"?"}`;
+  const ps=Object.keys(S.pairs),as=Object.keys(S.apts);
+  if(!ps.length&&!as.length)return "";
+  let t=`${ME==="kotik"?"★ Выбор Котика":"★ Выбор Влада"} — квартиры в Варшаве (${new Date().toLocaleDateString("ru-RU")}):\n`;
+  if(ps.length){t+=`\nПАРЫ (${ps.length}):\n`;ps.forEach((id,i)=>{const p=P[id]||{};const [a,b]=p.a?[p.a,p.b]:id.split("~");
+    t+=`\n${i+1}.${p.walk?` ${Math.round(p.walk)} мин пешком между квартирами`:""}\n  Квартира 1: ${line(L[a]||{url:S.pairs[id].a,gone:1})}\n  Квартира 2: ${line(L[b]||{url:S.pairs[id].b,gone:1})}\n`})}
+  if(as.length){t+=`\nОТДЕЛЬНЫЕ КВАРТИРЫ (${as.length}):\n`;as.forEach(id=>{t+=`\n- ${line(L[id]||{url:S.apts[id].url,gone:1})}\n`})}
+  return t;
+}
+$("#copy").addEventListener("click",async()=>{const t=picksText();
+  if(!t){$("#save").textContent="сначала отметь ★ пары или квартиры";return}
+  try{await navigator.clipboard.writeText(t);$("#save").textContent="✓ выбор скопирован — вставь в Telegram"}
+  catch(e){$("#copytext").value=t;$("#copybox").hidden=false;$("#copytext").select()}});
+document.addEventListener("click",e=>{const b=e.target.closest("[data-prof]");if(!b)return;
+  try{localStorage.setItem("wr_profile",b.dataset.prof)}catch(_){}location.reload()});
+$("#prof").addEventListener("click",()=>{$("#profbox").hidden=false});
+$("#copyclose").addEventListener("click",()=>{$("#copybox").hidden=true});
+let BOX={ph:[],i:0};
+function openBox(id,i){const l=L[id];if(!l||!(l.photos||[]).length)return;BOX={ph:l.photos,i:i||0};showBox();$("#zoom").hidden=false}
+function showBox(){const n=BOX.ph.length;BOX.i=(BOX.i+n)%n;$("#zimg").src=BOX.ph[BOX.i];$("#zcnt").textContent=`${BOX.i+1} / ${n}`;
+  const one=n<2;$("[data-zp]").hidden=one;$("[data-zn]").hidden=one;
+  [BOX.i+1,BOX.i-1].forEach(k=>{const im=new Image();im.src=BOX.ph[(k+n)%n]})}
+const closeBox=()=>{$("#zoom").hidden=true};
+$("#zoom").addEventListener("click",e=>{
+  if(e.target.closest("[data-zp]")){BOX.i--;showBox()}else if(e.target.closest("[data-zn]")){BOX.i++;showBox()}
+  else if(e.target.closest("[data-zx]")||e.target.id==="zoom")closeBox();
+  else if(e.target.id==="zimg"){BOX.i++;showBox()}});
+document.addEventListener("click",e=>{
+  const c=e.target.closest("[data-whychip]");if(c){const ta=$("#whytext"),v=c.dataset.whychip;
+    ta.value=ta.value.includes(v)?ta.value.replace(v,"").replace(/^[,\s]+|[,\s]+$/g,"").replace(/,\s*,/g,","):(ta.value.trim()?ta.value.trim()+", ":"")+v;c.classList.toggle("on");ta.focus();return}
+  const b=e.target.closest("[data-why]");if(b){closeWhy(b.dataset.why!=="cancel",b.dataset.why==="ok");return}
+  if(e.target.id==="whybox")closeWhy(false);
+  if(e.target.id==="matesbox"||e.target.id==="matesclose")closeMates()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&MATES&&$("#zoom").hidden&&$("#whybox").hidden)closeMates()});
+document.addEventListener("keydown",e=>{if(!$("#whybox").hidden){if(e.key==="Escape")closeWhy(false);else if(e.key==="Enter"&&!e.shiftKey&&e.target.id==="whytext"){e.preventDefault();closeWhy(true,!!$("#whytext").value.trim())}}});
+document.addEventListener("keydown",e=>{if($("#zoom").hidden)return;
+  if(e.key==="Escape")closeBox();else if(e.key==="ArrowRight"){BOX.i++;showBox()}else if(e.key==="ArrowLeft"){BOX.i--;showBox()}});
+let tx=null;$("#zoom").addEventListener("touchstart",e=>{tx=e.touches[0].clientX},{passive:true});
+$("#zoom").addEventListener("touchend",e=>{if(tx==null)return;const dx=e.changedTouches[0].clientX-tx;tx=null;
+  if(Math.abs(dx)>40){BOX.i+=dx<0?1:-1;showBox()}},{passive:true});
+document.addEventListener("input",e=>{const id=e.target.id;if(!id||!id.startsWith("f-"))return;MAPVIEW=null;
+  const k=id.slice(2);F[k]=e.target.type==="checkbox"?e.target.checked:e.target.value;shown.base=PAGE;
+  if(["pwalk","pmax","pvis","pnb","pbig","p1500","pc","puniq","prooms","dist"].includes(k)){savePF();shown[tab]=PAGE}
+  const pos=e.target.selectionStart;render();const el=document.getElementById(id);if(el&&el.type==="search"){el.focus();try{el.setSelectionRange(pos,pos)}catch(_){}}});
+document.addEventListener("change",e=>{if(e.target.id!=="maprad")return;MAPRAD=+e.target.value||800;try{localStorage.setItem("wr_maprad",String(MAPRAD))}catch(_){}
+  if(MAPSELB&&window.__selB)window.__selB(MAPSELB)});
+// new data or a new page version published while the page is open -> offer a reload (never reload by itself)
+let UPD_SKIP=null;
+async function checkUpdate(){
+  if(!D||window.__SHARE__||!$("#zoom").hidden||!$("#whybox").hidden)return;
+  try{const j=await (await fetch("version.json?t="+Date.now(),{cache:"no-store"})).json();
+    const key=(j.v||"")+"|"+(j.data||"");
+    const changed=(j.data&&D.sig&&j.data!==D.sig)||(window.__V__&&j.v&&j.v!==window.__V__);
+    if(changed&&key!==UPD_SKIP)$("#updbar").hidden=false}catch(_){}}
+setInterval(checkUpdate,60000);document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate()});
+$("#updgo").addEventListener("click",()=>location.reload());
+$("#updlater").addEventListener("click",async()=>{$("#updbar").hidden=true;
+  try{const j=await (await fetch("version.json?t="+Date.now(),{cache:"no-store"})).json();UPD_SKIP=(j.v||"")+"|"+(j.data||"")}catch(_){}});
+(async()=>{
+  if(window.__V__){try{const v=(await (await fetch("version.json",{cache:"no-store"})).json()).v;       // stale cached page -> reload once
+    if(v&&v!==window.__V__&&sessionStorage.getItem("wr_reloaded")!==v){sessionStorage.setItem("wr_reloaded",v);location.reload();return}}catch(_){}}
+  await loadState();
+  try{D=window.__SHARE__?window.__SHARE__.data:await (await fetch("data.json",{cache:"no-store"})).json()}catch(e){$("#main").innerHTML=`<div class="empty">Не удалось загрузить базу. Запусти сервер: python3 ~/warsaw_rent/serve.py</div>`;return}
+  for(const [k,v] of Object.entries(D.alias||{}))if(!D.listings[k]&&D.listings[v])D.listings[k]=D.listings[v];   // merged cross-posts
+  try{const r=await fetch("recs.json",{cache:"no-store"});if(r.ok)RECS=await r.json()}catch(_){}
+  try{const r=await fetch("retired.json",{cache:"no-store"});if(r.ok){const j=await r.json();if(Array.isArray(j))RETIRED=j}}catch(_){}
+  try{const r=await fetch("gone.json",{cache:"no-store"});if(r.ok){const j=await r.json();if(Array.isArray(j))GONE=j}}catch(_){}
+  // recommended pairs may not be in today's top/fresh lists: register them so ★ / ✕ can find them
+  for(const r of (RECS||{}).items||[]){
+    for(const [k,u] of [[r.a,r.a_url],[r.b,r.b_url]])if(!D.listings[k])D.listings[k]={id:k,url:u,gone:true,title:"",photos:[]};
+    if(!P[r.id])P[r.id]={id:r.id,a:r.a,b:r.b,walk:r.walk,d:r.d,tag:"rec"}}
+  try{const r=await fetch("kotik.json",{cache:"no-store"});if(r.ok)KOTIK=Object.assign({pairs:{},apts:{}},await r.json())}catch(_){}
+  if(api!=="fb"&&ME==="kotik"&&KOTIK&&!Object.keys(S.pairs).length&&!Object.keys(S.apts).length){  // new device: start from the imported list
+    S.pairs=Object.assign({},KOTIK.pairs);S.apts=Object.assign({},KOTIK.apts)}
+  L=D.listings;BY=null;
+  try{const all=[...new Set([...D.top,...D.fresh].map(p=>p.id))];let prev=null;
+    try{prev=JSON.parse(localStorage.getItem("wr_pairs_seen")||"null")}catch(_){}
+    if(Array.isArray(prev)){const ps=new Set(prev);NEWP=new Set(all.filter(id=>!ps.has(id)))}
+    setTimeout(()=>{try{localStorage.setItem("wr_pairs_seen",JSON.stringify(all))}catch(_){}},30000)}catch(_){}
+  try{const ids=Object.values(D.listings).filter(l=>l.id&&!l.gone).map(l=>l.id);let prevL=null;
+    try{prevL=JSON.parse(localStorage.getItem("wr_apts_seen")||"null")}catch(_){}
+    if(Array.isArray(prevL)){const q=new Set(prevL);NEWL=new Set(ids.filter(id=>!q.has(id)))}
+    setTimeout(()=>{try{localStorage.setItem("wr_apts_seen",JSON.stringify(ids))}catch(_){}},30000)}catch(_){}
+  for(const p of [...(D.spare||[]),...D.top,...D.fresh,...D.approved])if(!P[p.id]||p.n||P[p.id].tag==="rec"||P[p.id].tag==="spare")P[p.id]=p;
+  setTimeout(retiredToast,1500);
+  try{tab=localStorage.getItem("wr_tab")||"top"}catch(_){}if(["mine","owner","kotik"].includes(tab))tab="fav";if(!TABS.some(t=>t[0]===tab))tab="top";
+  $("#stats").innerHTML=`обновлено <b>${D.built_at||D.built.split("-").reverse().join(".")}</b> · база <b>${D.counts.listings}</b> квартир · $1 = ${D.usd} zł`;
+  $("#copy").hidden=api==="fb";        // shared Firebase list works -> no need to copy/send picks by hand
+  $("#save").textContent=api==="fb"?"✓ ★ общие — видно Владу и Котику":api?"✓ ★ сохраняются на Mac Влада":ME==="vlad"?"★ сохраняются в этом браузере (сервер на Mac недоступен)":"★ сохраняются в этом браузере — отправь Владу кнопкой 📋";
+  $("#prof").textContent=`${ICON[ME]} ${WHO[ME]} ▾`;$("#prof").title="Сменить профиль";
+  if(!PROFILE)$("#profbox").hidden=false;
+  render();
+})();
+</script>
+</body>
+</html>

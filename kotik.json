@@ -1,0 +1,27 @@
+{
+ "pairs": {},
+ "apts": {
+  "095592cd12": {
+   "t": "2026-10-05T09:52",
+   "url": "https://www.olx.pl/d/oferta/2-pokoje-blisko-metra-plocka-CID3-ID1bLzGx.html"
+  },
+  "913133cb98": {
+   "t": "2026-10-06T17:33",
+   "url": "https://www.olx.pl/d/oferta/piekne-wyjatkowe-duze-3-pokojowe-mieszkanie-68-m-z-oknami-na-3-strony-swiata-duza-kuchnia-dwie-lazienki-wanna-i-prysznic-warszawa-wola-CID3-ID1cppGc.html"
+  }
+ },
+ "nope": {
+  "d7cae8597f": {
+   "note": "Кауция 10к",
+   "t": "2026-10-08T13:14",
+   "url": "https://www.olx.pl/d/oferta/nowoczesny-apartament-o-wysokim-standardzie-ogrodowa-wola-bezpos-CID3-ID1coWXQ.html"
+  }
+ },
+ "hidden": {
+  "8e0a1ef496~fd881a5287": {
+   "a": "https://www.olx.pl/d/oferta/apartament-centrum-nowy-elegancki-designerski-CID3-ID19u0x0.html",
+   "b": "https://adresowo.pl/o/mieszkanie-wynajem-warszawa-wola-ul-krochmalna-2-pokojowe-m1i7a9",
+   "t": "2026-10-05T09:56"
+  }
+ }
+}

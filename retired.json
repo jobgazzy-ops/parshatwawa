@@ -1,0 +1,97 @@
+[
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/nowy-apartament-43m2-mokotow-ul-domaniewska-przy-westfield-mokotow-CID3-ID1bo0Oh.html"
+  ],
+  "title": "Квартира из пары #5 (Mokotów, Domaniewska 41A / 41B, ЖК \"Modern Mokotów\")",
+  "kept": null,
+  "who": "vlad",
+  "at": "2026-10-10T01:17"
+ },
+ {
+  "kind": "pair",
+  "urls": [
+   "https://www.otodom.pl/pl/oferta/eleganckie-2-pokojowe-mieszkanie-w-centrum-ul-zelazna-54-bez-prowizji-ID4Dkmm"
+  ],
+  "title": "Eleganckie 2-pokojowe mieszkanie w centrum-ul.Żelazna 54,Bez prowizji",
+  "kept": "https://www.olx.pl/d/oferta/premium-3-pokojowe-w-centrum-warszawy-grzybowska-bezposrednio-CID3-ID1czalH.html",
+  "kept_title": "Premium 3 pokojowe w centrum Warszawy , Grzybowska , Bezpośrednio",
+  "who": "vlad",
+  "at": "2026-10-09T09:57"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.otodom.pl/pl/oferta/eleganckie-2-pokojowe-mieszkanie-w-centrum-ul-zelazna-54-bez-prowizji-ID4Dkmm"
+  ],
+  "title": "Eleganckie 2-pokojowe mieszkanie w centrum-ul.Żelazna 54,Bez prowizji",
+  "kept": null,
+  "who": "vlad",
+  "at": "2026-10-09T09:57"
+ },
+ {
+  "kind": "pair",
+  "urls": [
+   "https://www.olx.pl/d/oferta/nowe-3-pokojowe-mieszkanie-z-wieloma-szafami-przy-m2-szwedzka-CID3-ID1cAper.html"
+  ],
+  "title": "nowe-3-pokojowe-mieszkanie-z-wieloma-szafami-przy-m2-szwedzka-CID3-ID1cAper.html",
+  "kept": "https://www.olx.pl/d/oferta/apart-53m2-3-pok-garaz-balkon-6m2-nowa-praga-pn-CID3-ID1bPsat.html",
+  "kept_title": "Apart 53m2, 3 pok, garaż, balkon 6m2 Nowa Praga Pn",
+  "who": "vlad",
+  "at": "2026-10-08T21:25"
+ },
+ {
+  "kind": "pair",
+  "urls": [
+   "https://www.olx.pl/d/oferta/do-wynajecia-3-pokoje-48m2-srodmiescie-grzybowska-4700zl-CID3-ID1ceBWK.html"
+  ],
+  "title": "do-wynajecia-3-pokoje-48m2-srodmiescie-grzybowska-4700zl-CID3-ID1ceBWK.html",
+  "kept": "https://www.olx.pl/d/oferta/premium-3-pokojowe-w-centrum-warszawy-grzybowska-bezposrednio-CID3-ID1czalH.html",
+  "kept_title": "Premium 3 pokojowe w centrum Warszawy , Grzybowska , Bezpośrednio",
+  "who": "vlad",
+  "at": "2026-10-08T21:25"
+ },
+ {
+  "kind": "pair",
+  "urls": [
+   "https://www.olx.pl/d/oferta/do-wynajecia-3-pokoje-48m2-srodmiescie-grzybowska-4700zl-CID3-ID1ceBWK.html"
+  ],
+  "title": "do-wynajecia-3-pokoje-48m2-srodmiescie-grzybowska-4700zl-CID3-ID1ceBWK.html",
+  "kept": "https://www.otodom.pl/pl/oferta/eleganckie-2-pokojowe-mieszkanie-w-centrum-ul-zelazna-54-bez-prowizji-ID4Dkmm",
+  "kept_title": "Eleganckie 2-pokojowe mieszkanie w centrum-ul.Żelazna 54,Bez prowizji",
+  "who": "vlad",
+  "at": "2026-10-08T21:25"
+ },
+ {
+  "kind": "pair",
+  "urls": [
+   "https://www.otodom.pl/pl/oferta/3-pokoje-68m2-klimatyzacja-garaz-wola-ID4DmBQ"
+  ],
+  "title": "3 pokoje, 68m2, klimatyzacja, garaż. Wola",
+  "kept": "https://www.olx.pl/d/oferta/wyjatkowe-3-pokojowe-mieszkanie-68-m-z-oknami-na-3-strony-swiata-warszawa-wola-ul-fort-wola-CID3-ID1ceGR1.html",
+  "kept_title": "Wyjątkowe, 3-pokojowe mieszkanie (68 m²) z oknami na 3 strony świata – Warszawa,",
+  "who": "vlad",
+  "at": "2026-10-07T10:39"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.otodom.pl/pl/oferta/3-pokoje-68m2-klimatyzacja-garaz-wola-ID4DmBQ"
+  ],
+  "title": "3 pokoje, 68m2, klimatyzacja, garaż. Wola",
+  "kept": null,
+  "who": "vlad",
+  "at": "2026-10-07T10:39"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/mieszkanie-warszawa-CID3-ID1cv3gK.html"
+  ],
+  "title": "mieszkanie-warszawa-CID3-ID1cv3gK.html",
+  "kept": null,
+  "who": "kotik",
+  "at": "2026-10-07T04:31"
+ }
+]

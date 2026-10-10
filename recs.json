@@ -1,0 +1,148 @@
+{
+ "updated": "08.10.2026 21:28",
+ "checked": "10.10.2026 13:20",
+ "log": [
+  {
+   "at": "08.10.2026 21:28",
+   "added": [
+    "📍 Центр — 3-комнатная на Grzybowska + 2-комнатная на Grzybowska 30",
+    "📍 Śródmieście — Świętokrzyska 35 (M1+M2) + Marszałkowska"
+   ],
+   "dropped": [
+    "🏢📍 Обе 3-комнатные в одном доме в центре — Grzybowska",
+    "📍 Через дорогу — новостройка 2026 на Żelazna + 3-комнатная на Grzybowska",
+    "🏢 В одном доме — новостройка 2026 у метро Szwedzka"
+   ]
+  },
+  {
+   "at": "07.10.2026 19:17",
+   "added": [],
+   "dropped": [
+    "📍 Ближе всех к школе — Powiśle после ремонта + Śródmieście 40 м²"
+   ]
+  }
+ ],
+ "items": [
+  {
+   "id": "1da276593a~e306be8b2c",
+   "a": "e306be8b2c",
+   "b": "1da276593a",
+   "a_url": "https://adresowo.pl/o/mieszkanie-wynajem-warszawa-wola-ul-kolejowa-2-pokojowe-u2s9v0",
+   "b_url": "https://www.olx.pl/d/oferta/2-pokojowy-apartament-45m2-klimatyzacja-garaz-dzielnica-19-wola-CID3-ID1ck2Js.html",
+   "walk": 2.0,
+   "d": 116,
+   "title": "🌿 Wola, 2 минуты друг от друга — Kolejowa + новостройка 2025 (как в твоём ★)",
+   "why": "Обе современные (4/5): 40 м² на Kolejowa и 45 м² в новостройке 2025 года с кондиционером и гаражом. 2 минуты пешком, 1,7–1,8 км от Дворца, до школы ~20 мин на транспорте. 5 285 и 5 900 zł. Эту пару ты уже отметил ★ — ставлю наверх как ориентир.",
+   "minus": "Вторая со всеми платежами ≈  570 — чуть выше  500. Обе 2-комнатные."
+  },
+  {
+   "id": "2c74eacf16~97eeba7d2b",
+   "a": "97eeba7d2b",
+   "b": "2c74eacf16",
+   "a_url": "https://www.olx.pl/d/oferta/premium-3-pokojowe-w-centrum-warszawy-grzybowska-bezposrednio-CID3-ID1czalH.html",
+   "b_url": "https://www.olx.pl/d/oferta/rondo-onz-swiezo-po-generalnym-remoncie-wszystko-nowe-2-pokojowego-CID3-ID1cvDoQ.html",
+   "walk": 8.1,
+   "d": 455,
+   "title": "📍 Центр — 3-комнатная на Grzybowska + свежий ремонт у Rondo ONZ",
+   "why": "3-комнатная 50 м² на Grzybowska + 2-комнатная 39,5 м² у Rondo ONZ «всё новое после капремонта», обе 4/5, современные. 8 минут пешком друг от друга, обе в 1,2 км от Дворца. 5 000 и 4 750 zł — самый дешёвый вариант в центре.",
+   "minus": "Вторая маленькая (39,5 м²). Год дома у второй не указан."
+  },
+  {
+   "id": "e515c57fec~ef2b239c00",
+   "a": "e515c57fec",
+   "b": "ef2b239c00",
+   "a_url": "https://www.olx.pl/d/oferta/nowoczesne-mieszkanie-40-m-srodmiescie-nowe-po-remoncie-CID3-ID1cjNnI.html",
+   "b_url": "https://adresowo.pl/o/mieszkanie-wynajem-warszawa-srodmiescie-ul-marszalkowska-2-pokojowe-j8n0r0",
+   "walk": 12.4,
+   "d": 704,
+   "title": "📍 Самый центр — Śródmieście после ремонта + новостройка 2025 на Marszałkowska",
+   "why": "Обе по 40 м², обе современные (4/5): светлый ремонт 2020-х в доме у центра и новостройка 2025 года на Marszałkowska с видом на город. Меньше 1 км от Дворца, до школы 11–14 мин на транспорте. 5 500 и 4 800 zł.",
+   "minus": "12 минут пешком друг от друга. Обе небольшие, не 3-комнатные."
+  },
+  {
+   "id": "1685948c77~cfc5674254",
+   "a": "cfc5674254",
+   "b": "1685948c77",
+   "a_url": "https://www.olx.pl/d/oferta/2-pokoje-bohema-metro-9-m-balkon-klimatyzacja-bezposrednio-CID3-ID1cjkM9.html",
+   "b_url": "https://www.olx.pl/d/oferta/nowoczesne-mieszkanie-pod-metrem-szwedzka-m2-CID3-ID1cikjE.html",
+   "walk": 5.8,
+   "d": 174,
+   "title": "⭐ Лучшая находка — Praga-Północ, у метро Szwedzka (M2)",
+   "why": "Обе квартиры — дизайнерские, по фото 5/5: тёмный «мудовый» интерьер с ботаническими обоями и стильная новостройка 2023. 6 минут пешком друг от друга, до школы ~17–20 минут на метро M2 без пересадок. 4 342 и 4 900 zł — ниже потолка.",
+   "minus": "У первой не указан залог, у второй — размер кровати. Уточнить."
+  },
+  {
+   "id": "11a0b34240~a5a776fecc",
+   "a": "11a0b34240",
+   "b": "a5a776fecc",
+   "a_url": "https://www.otodom.pl/pl/oferta/pierwszy-najem-40-m-soho-swps-wysoki-standard-2-pokoje-ID4DlaM",
+   "b_url": "https://www.olx.pl/d/oferta/soho-by-yareal-pierwszy-najem-43-m-9-5-m-loggia-garaz-zupnicza-CID3-ID1cwUd6.html",
+   "walk": null,
+   "d": null,
+   "title": "⭐ Обе 5/5 — SOHO by Yareal + дизайнерская квартира на Mińska (Praga-Południe)",
+   "why": "Единственная пара, где обе квартиры дизайнерские по самой строгой оценке: SOHO by Yareal (первый наём, лоджия 9,5 м², гараж) и светлая квартира в кремовых тонах с подсветкой на Mińska. 6 минут пешком. 4 950 и 4 980 zł, ≈ $1 345 со всеми платежами.",
+   "minus": "Не центр: 4 км от Дворца, до школы ~21–23 мин на транспорте. Обе 2-комнатные, 40–43 м²."
+  },
+  {
+   "id": "580474f17c~ea383ff36e",
+   "a": "580474f17c",
+   "b": "ea383ff36e",
+   "a_url": "https://www.olx.pl/d/oferta/bez-prowizji-3-pokojowe-z-balkonem-CID3-ID1cvBkf.html",
+   "b_url": "https://www.olx.pl/d/oferta/bez-prowizji-3-pokojowe-z-balkonem-dostepne-od-zaraz-rabat-50-CID3-ID1cvyCJ.html",
+   "walk": null,
+   "d": null,
+   "title": "📐 Обе большие 3-комнатные в одном доме 2022 — Praga-Południe (57 и 65 м²)",
+   "why": "Две 3-комнатные квартиры, 57 и 65 м², в одной новостройке 2022 года — ровно ваш «идеал по площади», и обе уже в твоём ★. Современный светлый интерьер (обе 4/5). 5 537 и 5 751 zł в месяц, без комиссии. Первое объявление на OLX сняли — вторая квартира теперь по ссылке Otodom.",
+   "minus": "Далеко от центра: 5,4 км от Дворца, до школы ~30 мин на транспорте. Со всеми платежами ≈ $1 543 — чуть выше $1 500."
+  },
+  {
+   "id": "306ccd44f1~df398b51af",
+   "a": "df398b51af",
+   "b": "306ccd44f1",
+   "a_url": "https://www.otodom.pl/pl/oferta/nowolipki-klimatyczne-ciche-komuniikacja-parking-muranow-ID4DnDi",
+   "b_url": "https://www.olx.pl/d/oferta/apartament-2-pokoje-karmelicka-srodmiescie-CID3-ID1ctQUZ.html",
+   "walk": 9.5,
+   "d": 562,
+   "title": "💸 Центр недорого — Nowolipki + Karmelicka (Muranów)",
+   "why": "Две квартиры в Muranów, 1,7–1,9 км от Дворца, 10 минут пешком друг от друга: 41 м² на Nowolipki и 50 м² на Karmelicka, обе 4/5. Самые дешёвые в центре: 4 190 и 5 000 zł, ≈  135 и  342 со всеми платежами.",
+   "minus": "Nowolipki — дом 1956 года, интерьер «климатичный», тёмнее остальных. Обе 2-комнатные."
+  },
+  {
+   "id": "056b4cb632~f013d62aa3",
+   "a": "056b4cb632",
+   "b": "f013d62aa3",
+   "a_url": "https://www.olx.pl/d/oferta/apartament-na-woli-z-garazem-i-komorka-lokatorska-CID3-ID1bIJ2i.html",
+   "b_url": "https://www.olx.pl/d/oferta/mieszkanie-2-pok-z-balkonem-na-woli-blisko-rondo-daszynskiego-CID3-ID1bIWR7.html",
+   "walk": 0.6,
+   "d": 57,
+   "title": "⚖️ Самая ровная пара — Wola у Rondo Daszyńskiego",
+   "why": "Одинаковая цена 5 100 + 5 100, обе новостройки 2021–22, фото 4/5, соседние дома (1 минута). Тот же район, что и одобренные пары #22 и #24.",
+   "minus": "Ближе к потолку бюджета; до школы ~33 минуты на транспорте; в первой про кровать не написано."
+  },
+  {
+   "id": "78be7c2632~97eeba7d2b",
+   "a": "97eeba7d2b",
+   "b": "78be7c2632",
+   "a_url": "https://www.olx.pl/d/oferta/premium-3-pokojowe-w-centrum-warszawy-grzybowska-bezposrednio-CID3-ID1czalH.html",
+   "b_url": "https://www.otodom.pl/pl/oferta/do-wynajecia-mieszkanie-39-m-warszawa-ul-grzybowska-30-ID4DavX",
+   "walk": 7.3,
+   "d": 450,
+   "title": "📍 Центр — 3-комнатная на Grzybowska + 2-комнатная на Grzybowska 30",
+   "why": "3-комнатная 50 м² (Grzybowska, 5 000 zł) и 2-комнатная 39 м² в доме напротив-рядом (Grzybowska 30, 4 150 zł, ≈$1 125 всё включено) — оба 4/5 по фото, 0,9–1,2 км от Дворца культуры, 7 минут пешком друг от друга, до школы ~20 мин на транспорте. Самая дешёвая пара в центре.",
+   "minus": "Вторая небольшая (39 м²), дом 1972 года — не новостройка."
+  },
+  {
+   "id": "9568fecfe0~ef2b239c00",
+   "a": "9568fecfe0",
+   "b": "ef2b239c00",
+   "a_url": "https://www.otodom.pl/pl/oferta/swietokrzyska-35-metro-m1-m2-2-oddzielne-pokoje-balkon-ID4DanO",
+   "b_url": "https://adresowo.pl/o/mieszkanie-wynajem-warszawa-srodmiescie-ul-marszalkowska-2-pokojowe-j8n0r0",
+   "walk": 12.1,
+   "d": 829,
+   "title": "📍 Śródmieście — Świętokrzyska 35 (M1+M2) + Marszałkowska",
+   "why": "Две 2-комнатные по ~40 м², обе 4/5: Świętokrzyska 35 у двух линий метро с балконом (4 770 zł) и новостройка 2025 на Marszałkowska (4 800 zł). Меньше 1 км от Дворца культуры, школа ~7–14 мин, 12 минут пешком между ними. ≈$1 285–1 290 всё включено.",
+   "minus": "Обе небольшие, не 3-комнатные; Świętokrzyska — дом 1979 года."
+  }
+ ],
+ "note": "новых пар лучше текущих нет, все 10 актуальны"
+}
