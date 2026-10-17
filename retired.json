@@ -1,0 +1,378 @@
+[
+ {
+  "kind": "apt",
+  "urls": [
+   "https://adresowo.pl/o/mieszkanie-wynajem-warszawa-wola-ul-kolejowa-2-pokojowe-u2s9v0"
+  ],
+  "title": "mieszkanie-wynajem-warszawa-wola-ul-kolejowa-2-pokojowe-u2s9v0",
+  "kept": null,
+  "reason": "gone",
+  "who": "vlad",
+  "at": "2026-10-16T13:53"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.otodom.pl/pl/oferta/modern-city-living-bez-prowizji-ID4CQzu"
+  ],
+  "title": "Modern City Living | \"BEZ PROWIZJI!\"",
+  "kept": null,
+  "reason": "gone",
+  "who": "vlad",
+  "at": "2026-10-16T13:13"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/apartament-54-m-z-ogrodkiem-przy-parku-szczesliwickim-wlodarzewska-CID3-ID1cpT5D.html"
+  ],
+  "title": "Apartament 54 m² z ogródkiem przy Parku Szczęśliwickim | Włodarzewska",
+  "kept": null,
+  "reason": "gone",
+  "who": "vlad",
+  "at": "2026-10-16T13:13"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.otodom.pl/pl/oferta/apartament-54m2-srodmiescie-plac-mirowski-ID4Ds2k"
+  ],
+  "title": "Apartament 54m2 Śródmieście Plac Mirowski",
+  "kept": null,
+  "reason": "gone",
+  "who": "vlad",
+  "at": "2026-10-16T13:13"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.otodom.pl/pl/oferta/wola-r-daszynskiego-72m2-3-pokoje-ac-parking-bezposrednio-ID4D30H"
+  ],
+  "title": "Wola, R. Daszyńskiego, 72m2, 3 pokoje, AC, parking - bezpośrednio",
+  "kept": null,
+  "reason": "gone",
+  "who": "vlad",
+  "at": "2026-10-14T13:30"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/nowoczesne-2-pokojowe-mieszkanie-7-min-do-metra-CID3-ID1cE6nW.html"
+  ],
+  "title": "Nowoczesne 2-pokojowe mieszkanie, 7 min. do METRA",
+  "kept": null,
+  "reason": "okaz",
+  "who": "adel",
+  "at": "2026-10-14T00:39"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/do-wynajecia-2-pok-na-ul-jana-kazimierza-46-CID3-ID1cASv9.html"
+  ],
+  "title": "Do wynajęcia 2-pok na Ul. Jana Kazimierza 46",
+  "kept": null,
+  "reason": "okaz",
+  "who": "adel",
+  "at": "2026-10-14T00:39"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/wola-nowe-mieszkanie-2-pokoje-spokojna-i-zielona-okolica-blisko-centrum-CID3-ID1cFkXL.html"
+  ],
+  "title": "Wola. Nowe mieszkanie 2 pokoje, spokojna i zielona okolica, blisko centrum",
+  "kept": null,
+  "reason": "okaz",
+  "who": "adel",
+  "at": "2026-10-14T00:39"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/mieszkanie-przy-metrze-wysoki-standard-citylink-CID3-ID1c9XkQ.html"
+  ],
+  "title": "Mieszkanie przy metrze - wysoki standard, CityLink",
+  "kept": null,
+  "reason": "okaz",
+  "who": "adel",
+  "at": "2026-10-14T00:39"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.otodom.pl/pl/oferta/dla-pary-2-pokoje-46-m-gagarina-tramwaj-pod-blokiem-ID4DjzV"
+  ],
+  "title": "Dla pary | 2 pokoje | 46 m² | Gagarina| tramwaj pod blokiem",
+  "kept": null,
+  "reason": "okaz",
+  "who": "kotik",
+  "at": "2026-10-14T00:39"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/piekne-wyjatkowe-duze-3-pokojowe-mieszkanie-68-m-z-oknami-na-3-strony-swiata-duza-kuchnia-dwie-lazienki-wanna-i-prysznic-warszawa-wola-CID3-ID1cppGc.html"
+  ],
+  "title": "Warszawa Wola, ul. Jana Olbrachta Mieszkanie - 3 pokoje - 70 m² - 4 piętro",
+  "kept": null,
+  "reason": "okaz",
+  "who": "kotik",
+  "at": "2026-10-14T00:39"
+ },
+ {
+  "kind": "pair",
+  "urls": [
+   "https://www.olx.pl/d/oferta/mieszkanie-przy-metrze-wysoki-standard-citylink-CID3-ID1c9XkQ.html",
+   "https://www.olx.pl/d/oferta/2-pokojowe-mieszkanie-z-tarasem-w-inwestycji-apartamenty-ludwiki-CID3-ID1cv1mg.html"
+  ],
+  "title": "Mieszkanie przy metrze - wysoki standard, CityLink + 2-pokojowe mieszkanie z tarasem w inwestycji Apartamenty Ludwiki",
+  "kept": null,
+  "reason": "okaz",
+  "who": "vlad",
+  "at": "2026-10-14T00:39"
+ },
+ {
+  "kind": "pair",
+  "urls": [
+   "https://www.olx.pl/d/oferta/mieszkanie-2-pokoje-42-8m2-warszawa-mokotow-zdziechowskiego-balkon-garaz-blisko-metro-nowe-budownictwo-CID3-ID1cg7Fk.html"
+  ],
+  "title": "Mieszkanie 2 pokoje - 42,8m2 Warszawa Mokotów Zdziechowskiego balkon, garaż, bli",
+  "kept": "https://www.olx.pl/d/oferta/holm-house-piekne-sloneczne-2pokoje-z-balkonem-i-garazem-CID3-ID1aFhVz.html",
+  "kept_title": "HOLM HOUSE piękne słoneczne 2pokoje z balkonem i garażem",
+  "reason": "okaz",
+  "who": "vlad",
+  "at": "2026-10-14T00:39"
+ },
+ {
+  "kind": "pair",
+  "urls": [
+   "https://www.olx.pl/d/oferta/nowo-wykonczone-3-pokoje-64-m2-z-balkonem-i-garazem-w-cenie-CID3-ID1cpIN5.html"
+  ],
+  "title": "Nowo wykończone, 3 pokoje, 64 m2 z balkonem i garażem w cenie",
+  "kept": "https://www.olx.pl/d/oferta/apartament-67m2-3-pokoje-10-min-od-metra-garaz-komorka-park-CID3-ID1b2q1B.html",
+  "kept_title": "Apartament 67m2 - 3 pokoje | 10 min od Metra | garaż| komórka | Park",
+  "reason": "okaz",
+  "who": "vlad",
+  "at": "2026-10-14T00:39"
+ },
+ {
+  "kind": "pair",
+  "urls": [
+   "https://www.olx.pl/d/oferta/nowoczesne-3-pokojowe-mieszkanie-z-duzym-balkonem-CID3-ID1cmXAo.html"
+  ],
+  "title": "Nowoczesne 3-pokojowe mieszkanie z dużym balkonem",
+  "kept": "https://www.olx.pl/d/oferta/bez-prowizji-3-pokojowe-z-balkonem-CID3-ID1cvBkf.html",
+  "kept_title": "BEZ PROWIZJI, 3-pokojowe z balkonem",
+  "reason": "okaz",
+  "who": "vlad",
+  "at": "2026-10-14T00:39"
+ },
+ {
+  "kind": "pair",
+  "urls": [
+   "https://www.olx.pl/d/oferta/soho-by-yareal-pierwszy-najem-43-m-9-5-m-loggia-garaz-CID3-ID1cwUd6.html"
+  ],
+  "title": "SOHO by Yareal | PIERWSZY NAJEM | 43 m²+9,5 m² loggia| garaż  Żupnicza",
+  "kept": "https://www.otodom.pl/pl/oferta/pierwszy-najem-40-m-soho-swps-wysoki-standard-2-pokoje-ID4DlaM",
+  "kept_title": "PIERWSZY NAJEM | 40 m² | SOHO / SWPS | WYSOKI STANDARD | 2 POKOJE",
+  "reason": "okaz",
+  "who": "vlad",
+  "at": "2026-10-14T00:39"
+ },
+ {
+  "kind": "pair",
+  "urls": [
+   "https://www.olx.pl/d/oferta/nowoczesny-apartament-o-wysokim-standardzie-ogrodowa-wola-bezpos-CID3-ID1coWXQ.html"
+  ],
+  "title": "Nowoczesny apartament o wysokim standardzie | Ogrodowa, Wola | Bezpoś",
+  "kept": "https://www.olx.pl/d/oferta/nowoczesne-2-pokojowe-mieszkanie-w-woli-ogrodowa-apartamenty-CID3-ID1c9OK9.html",
+  "kept_title": "Nowoczesne 2-pokojowe mieszkanie w Woli Ogrodowa Apartamenty",
+  "reason": "okaz",
+  "who": "vlad",
+  "at": "2026-10-14T00:39"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/apart-53m2-3-pok-garaz-balkon-6m2-nowa-praga-pn-CID3-ID1bPsat.html"
+  ],
+  "title": "REZERWACJA - Apart 53m2, 3 pok, garaż, balkon 6m2 Nowa Praga Pn",
+  "kept": null,
+  "reason": "okaz",
+  "who": "vlad",
+  "at": "2026-10-14T00:39"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/do-wynajecia-2-pok-na-ul-jana-kazimierza-46-CID3-ID1cASv9.html"
+  ],
+  "title": "Do wynajęcia 2-pok na Ul. Jana Kazimierza 46",
+  "kept": null,
+  "reason": "okaz",
+  "who": "vlad",
+  "at": "2026-10-14T00:39"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.otodom.pl/pl/oferta/dla-pary-2-pokoje-46-m-gagarina-tramwaj-pod-blokiem-ID4DjzV"
+  ],
+  "title": "Dla pary | 2 pokoje | 46 m² | Gagarina| tramwaj pod blokiem",
+  "kept": null,
+  "reason": "okaz",
+  "who": "vlad",
+  "at": "2026-10-14T00:39"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.otodom.pl/pl/oferta/spokojna-okolica-w-centrum-2-pokoje-blisko-hali-mirowskiej-ID4Ds2I"
+  ],
+  "title": "Spokojna okolica w centrum – 2 pokoje, blisko Hali Mirowskiej",
+  "kept": null,
+  "reason": "okaz",
+  "who": "vlad",
+  "at": "2026-10-14T00:39"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/piekne-wyjatkowe-duze-3-pokojowe-mieszkanie-68-m-z-oknami-na-3-strony-swiata-duza-kuchnia-dwie-lazienki-wanna-i-prysznic-warszawa-wola-CID3-ID1cppGc.html"
+  ],
+  "title": "Warszawa Wola, ul. Jana Olbrachta Mieszkanie - 3 pokoje - 70 m² - 4 piętro",
+  "kept": null,
+  "reason": "okaz",
+  "who": "vlad",
+  "at": "2026-10-14T00:39"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/przytulne-3-pokojowe-mieszkanie-po-remoncie-dobre-materialy-i-styl-CID3-ID1cJMWX.html"
+  ],
+  "title": "Przytulne 3-pokojowe mieszkanie po remoncie - dobre materiały i styl",
+  "kept": null,
+  "reason": "okaz",
+  "who": "vlad",
+  "at": "2026-10-14T00:39"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/eleganckie-3-pokojowe-mieszkanie-na-wynajem-CID3-ID1cdogd.html"
+  ],
+  "title": "Eleganckie 3 pokojowe mieszkanie na wynajem",
+  "kept": null,
+  "reason": "okaz",
+  "who": "vlad",
+  "at": "2026-10-14T00:39"
+ },
+ {
+  "kind": "pair",
+  "urls": [
+   "https://www.olx.pl/d/oferta/2-pokojowy-apartament-45m2-klimatyzacja-garaz-dzielnica-19-wola-CID3-ID1ck2Js.html"
+  ],
+  "title": "2-pokojowy-apartament-45m2-klimatyzacja-garaz-dzielnica-19-wola-CID3-ID1ck2Js.ht",
+  "kept": "https://adresowo.pl/o/mieszkanie-wynajem-warszawa-wola-ul-kolejowa-2-pokojowe-u2s9v0",
+  "kept_title": "Warszawa Wola, ul. Kolejowa Mieszkanie - 2 pokoje - 40 m² - 4 piętro",
+  "who": "vlad",
+  "at": "2026-10-13T00:59"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/nowy-apartament-43m2-mokotow-ul-domaniewska-przy-westfield-mokotow-CID3-ID1bo0Oh.html"
+  ],
+  "title": "Квартира из пары #5 (Mokotów, Domaniewska 41A / 41B, ЖК \"Modern Mokotów\")",
+  "kept": null,
+  "who": "vlad",
+  "at": "2026-10-10T01:17"
+ },
+ {
+  "kind": "pair",
+  "urls": [
+   "https://www.otodom.pl/pl/oferta/eleganckie-2-pokojowe-mieszkanie-w-centrum-ul-zelazna-54-bez-prowizji-ID4Dkmm"
+  ],
+  "title": "Eleganckie 2-pokojowe mieszkanie w centrum-ul.Żelazna 54,Bez prowizji",
+  "kept": "https://www.olx.pl/d/oferta/premium-3-pokojowe-w-centrum-warszawy-grzybowska-bezposrednio-CID3-ID1czalH.html",
+  "kept_title": "Premium 3 pokojowe w centrum Warszawy , Grzybowska , Bezpośrednio",
+  "who": "vlad",
+  "at": "2026-10-09T09:57"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.otodom.pl/pl/oferta/eleganckie-2-pokojowe-mieszkanie-w-centrum-ul-zelazna-54-bez-prowizji-ID4Dkmm"
+  ],
+  "title": "Eleganckie 2-pokojowe mieszkanie w centrum-ul.Żelazna 54,Bez prowizji",
+  "kept": null,
+  "who": "vlad",
+  "at": "2026-10-09T09:57"
+ },
+ {
+  "kind": "pair",
+  "urls": [
+   "https://www.olx.pl/d/oferta/nowe-3-pokojowe-mieszkanie-z-wieloma-szafami-przy-m2-szwedzka-CID3-ID1cAper.html"
+  ],
+  "title": "nowe-3-pokojowe-mieszkanie-z-wieloma-szafami-przy-m2-szwedzka-CID3-ID1cAper.html",
+  "kept": "https://www.olx.pl/d/oferta/apart-53m2-3-pok-garaz-balkon-6m2-nowa-praga-pn-CID3-ID1bPsat.html",
+  "kept_title": "Apart 53m2, 3 pok, garaż, balkon 6m2 Nowa Praga Pn",
+  "who": "vlad",
+  "at": "2026-10-08T21:25"
+ },
+ {
+  "kind": "pair",
+  "urls": [
+   "https://www.olx.pl/d/oferta/do-wynajecia-3-pokoje-48m2-srodmiescie-grzybowska-4700zl-CID3-ID1ceBWK.html"
+  ],
+  "title": "do-wynajecia-3-pokoje-48m2-srodmiescie-grzybowska-4700zl-CID3-ID1ceBWK.html",
+  "kept": "https://www.olx.pl/d/oferta/premium-3-pokojowe-w-centrum-warszawy-grzybowska-bezposrednio-CID3-ID1czalH.html",
+  "kept_title": "Premium 3 pokojowe w centrum Warszawy , Grzybowska , Bezpośrednio",
+  "who": "vlad",
+  "at": "2026-10-08T21:25"
+ },
+ {
+  "kind": "pair",
+  "urls": [
+   "https://www.olx.pl/d/oferta/do-wynajecia-3-pokoje-48m2-srodmiescie-grzybowska-4700zl-CID3-ID1ceBWK.html"
+  ],
+  "title": "do-wynajecia-3-pokoje-48m2-srodmiescie-grzybowska-4700zl-CID3-ID1ceBWK.html",
+  "kept": "https://www.otodom.pl/pl/oferta/eleganckie-2-pokojowe-mieszkanie-w-centrum-ul-zelazna-54-bez-prowizji-ID4Dkmm",
+  "kept_title": "Eleganckie 2-pokojowe mieszkanie w centrum-ul.Żelazna 54,Bez prowizji",
+  "who": "vlad",
+  "at": "2026-10-08T21:25"
+ },
+ {
+  "kind": "pair",
+  "urls": [
+   "https://www.otodom.pl/pl/oferta/3-pokoje-68m2-klimatyzacja-garaz-wola-ID4DmBQ"
+  ],
+  "title": "3 pokoje, 68m2, klimatyzacja, garaż. Wola",
+  "kept": "https://www.olx.pl/d/oferta/wyjatkowe-3-pokojowe-mieszkanie-68-m-z-oknami-na-3-strony-swiata-warszawa-wola-ul-fort-wola-CID3-ID1ceGR1.html",
+  "kept_title": "Wyjątkowe, 3-pokojowe mieszkanie (68 m²) z oknami na 3 strony świata – Warszawa,",
+  "who": "vlad",
+  "at": "2026-10-07T10:39"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.otodom.pl/pl/oferta/3-pokoje-68m2-klimatyzacja-garaz-wola-ID4DmBQ"
+  ],
+  "title": "3 pokoje, 68m2, klimatyzacja, garaż. Wola",
+  "kept": null,
+  "who": "vlad",
+  "at": "2026-10-07T10:39"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/mieszkanie-warszawa-CID3-ID1cv3gK.html"
+  ],
+  "title": "mieszkanie-warszawa-CID3-ID1cv3gK.html",
+  "kept": null,
+  "who": "kotik",
+  "at": "2026-10-07T04:31"
+ }
+]

@@ -1,0 +1,59 @@
+{
+ "pairs": {},
+ "apts": {
+  "095592cd12": {
+   "st": "wrote",
+   "stt": "2026-10-14T10:03",
+   "t": "2026-10-05T09:52",
+   "url": "https://www.olx.pl/d/oferta/2-pokoje-blisko-metra-plocka-CID3-ID1bLzGx.html"
+  },
+  "fe03d167e1": {
+   "st": "wrote",
+   "stt": "2026-10-14T10:04",
+   "t": "2026-10-13T17:35",
+   "url": "https://www.otodom.pl/pl/oferta/mieszkanie-2-pokojowe-z-20-mkw-tarasem-w-woli-ID4DgEP"
+  }
+ },
+ "nope": {
+  "3fb829f1b5": {
+   "note": "Далеко",
+   "t": "2026-10-14T09:57",
+   "title": "Apartament 67m2 - 3 pokoje | 10 min od Metra | garaż| komórka | Park",
+   "url": "https://www.olx.pl/d/oferta/apartament-67m2-3-pokoje-10-min-od-metra-garaz-komorka-park-CID3-ID1b2q1B.html"
+  },
+  "580474f17c": {
+   "note": "Нету телика",
+   "t": "2026-10-11T19:01",
+   "url": "https://www.olx.pl/d/oferta/bez-prowizji-3-pokojowe-z-balkonem-CID3-ID1cvBkf.html"
+  },
+  "66cff90b1d": {
+   "note": "Прага",
+   "t": "2026-10-14T09:57",
+   "title": "PIERWSZY NAJEM | 40 m² | SOHO / SWPS | WYSOKI STANDARD | 2 POKOJE",
+   "url": "https://www.otodom.pl/pl/oferta/pierwszy-najem-40-m-soho-swps-wysoki-standard-2-pokoje-ID4DlaM"
+  },
+  "6a58ebc0b8": {
+   "note": "Нотариус",
+   "t": "2026-10-13T17:45",
+   "url": "https://www.otodom.pl/pl/oferta/mieszkanie-2-pokojowe-rondo-daszynskiego-kolejowa-klimatyzacja-ID4CVYX"
+  },
+  "a43e4f9d6a": {
+   "note": "Оч далеко",
+   "t": "2026-10-14T09:59",
+   "title": "Bezpośrednio, Wilanów, Nordic Sadyba, ul. Nałęczowska, 3 pokojowe",
+   "url": "https://www.olx.pl/d/oferta/bezposrednio-wilanow-nordic-sadyba-ul-naleczowska-3-pokojowe-CID3-ID1cGdAe.html"
+  },
+  "f90f2944c4": {
+   "note": "Нету телика",
+   "t": "2026-10-11T19:02",
+   "url": "https://www.otodom.pl/pl/oferta/bez-prowizji-3-pokojowe-z-garderoba-50-na-pierwszy-miesiac-ID4DsfR"
+  }
+ },
+ "hidden": {
+  "8e0a1ef496~fd881a5287": {
+   "a": "https://www.olx.pl/d/oferta/apartament-centrum-nowy-elegancki-designerski-CID3-ID19u0x0.html",
+   "b": "https://adresowo.pl/o/mieszkanie-wynajem-warszawa-wola-ul-krochmalna-2-pokojowe-m1i7a9",
+   "t": "2026-10-05T09:56"
+  }
+ }
+}
