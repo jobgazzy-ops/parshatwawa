@@ -1,0 +1,446 @@
+[
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.otodom.pl/pl/oferta/wynajme-mieszkanie-na-woli-w-warszawie-przy-ul-radziwie-ID4DaV4"
+  ],
+  "title": "wynajmę mieszkanie na Woli w Warszawie przy ul. Radziwie",
+  "kept": null,
+  "reason": "gone",
+  "who": "adel",
+  "at": "2026-11-14T13:32"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/3-pokojowe-mieszkanie-60m2-garaz-klimatyzacja-balkon-garderoba-CID3-ID1cMnaG.html"
+  ],
+  "title": "3-pokojowe-mieszkanie-60m2-garaz-klimatyzacja-balkon-garderoba-CID3-ID1cMnaG.htm",
+  "kept": null,
+  "reason": "gone",
+  "who": "kotik",
+  "at": "2026-11-14T05:59"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/apartament-2-pokoje-karmelicka-srodmiescie-CID3-ID1ctQUZ.html"
+  ],
+  "title": "Apartament, 2 pokoje, Karmelicka - Śródmieście",
+  "kept": null,
+  "reason": "gone",
+  "who": "adel",
+  "at": "2026-11-13T14:24"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/apartament-2-pokoje-karmelicka-srodmiescie-CID3-ID1ctQUZ.html"
+  ],
+  "title": "Apartament, 2 pokoje, Karmelicka - Śródmieście",
+  "kept": null,
+  "reason": "gone",
+  "who": "kotik",
+  "at": "2026-11-13T14:24"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/ul-kolejowa-15-nowy-etap-swiezo-wykonczone-winda-garaz-CID3-ID1cLdm1.html"
+  ],
+  "title": "ul-kolejowa-15-nowy-etap-swiezo-wykonczone-winda-garaz-CID3-ID1cLdm1.html",
+  "kept": null,
+  "reason": "gone",
+  "who": "adel",
+  "at": "2026-11-12T23:59"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/52m2-przy-mokotowskiej-klimatyzacja-winda-bezposrednio-CID3-ID1cIvpk.html"
+  ],
+  "title": "52m2 przy Mokotowskiej | Klimatyzacja | Winda | Bezpośrednio",
+  "kept": null,
+  "reason": "gone",
+  "who": "vlad",
+  "at": "2026-11-10T03:03"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/wynajme-mieszkanie-warszawa-obok-blu-city-CID3-ID1cHfWd.html"
+  ],
+  "title": "Wynajmę mieszkanie Warszawa obok Blu City",
+  "kept": null,
+  "reason": "gone",
+  "who": "kotik",
+  "at": "2026-11-08T23:41"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/wynajme-mieszkanie-warszawa-obok-blu-city-CID3-ID1cHfWd.html"
+  ],
+  "title": "Wynajmę mieszkanie Warszawa obok Blu City",
+  "kept": null,
+  "reason": "gone",
+  "who": "vlad",
+  "at": "2026-11-08T23:41"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/3-pokojowe-mieszkanie-w-wysokim-standardzie-na-warszawskim-powislu-CID3-ID1cgAAQ.html"
+  ],
+  "title": "3-pokojowe-mieszkanie-w-wysokim-standardzie-na-warszawskim-powislu-CID3-ID1cgAAQ",
+  "kept": null,
+  "reason": "gone",
+  "who": "vlad",
+  "at": "2026-11-07T21:57"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.otodom.pl/pl/oferta/dwupokojowe-mieszkanie-z-oddzielna-kuchnia-centrum-metro-swietokrzyska-ID4DwMa"
+  ],
+  "title": "Dwupokojowe mieszkanie z oddzielną kuchnią Centrum,Metro Świętokrzyska",
+  "kept": null,
+  "reason": "gone",
+  "who": "kotik",
+  "at": "2026-11-07T21:45"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.otodom.pl/pl/oferta/dwupokojowe-mieszkanie-z-oddzielna-kuchnia-centrum-metro-swietokrzyska-ID4DwMa"
+  ],
+  "title": "Dwupokojowe mieszkanie z oddzielną kuchnią Centrum,Metro Świętokrzyska",
+  "kept": null,
+  "reason": "gone",
+  "who": "vlad",
+  "at": "2026-11-07T21:45"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.otodom.pl/pl/oferta/3-pokoje-wola-srodmiescie-70-m-i-balkon-ul-bellottiego-3b-ID4Dfnb"
+  ],
+  "title": "3 pokoje | Wola - Śródmieście | 70 m² I balkon | ul. Bellottiego 3b",
+  "kept": null,
+  "reason": "gone",
+  "who": "vlad",
+  "at": "2026-11-07T21:45"
+ },
+ {
+  "kind": "pair",
+  "urls": [
+   "https://www.olx.pl/d/oferta/bezposrednio-2-pokojowe-mieszkanie-rondo-daszynskiego-CID3-ID1cDFnN.html"
+  ],
+  "title": "bezposrednio-2-pokojowe-mieszkanie-rondo-daszynskiego-CID3-ID1cDFnN.html",
+  "kept": "https://www.olx.pl/d/oferta/mieszkanie-3-pokoje-50m2-super-lokalizacja-CID3-ID1bxu5H.html",
+  "kept_title": "Mieszkanie 3 pokoje 50m2 Super lokalizacja",
+  "reason": "gone",
+  "who": "adel",
+  "at": "2026-11-06T17:06"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/2-pokojowe-mieszkanie-do-wynajecia-warszawa-ul-jana-kazimierza-wola-CID3-ID1cnK0F.html"
+  ],
+  "title": "2-pokojowe-mieszkanie-do-wynajecia-warszawa-ul-jana-kazimierza-wola-CID3-ID1cnK0",
+  "kept": null,
+  "reason": "gone",
+  "who": "adel",
+  "at": "2026-11-06T17:06"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/mieszkanie-2-pok-z-balkonem-na-woli-blisko-rondo-daszynskiego-CID3-ID1bIWR7.html"
+  ],
+  "title": "mieszkanie-2-pok-z-balkonem-na-woli-blisko-rondo-daszynskiego-CID3-ID1bIWR7.html",
+  "kept": null,
+  "reason": "gone",
+  "who": "adel",
+  "at": "2026-11-06T17:06"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/nowe-pierwszy-najem-3-pokoje-56-m-zupnicza-bezposrednio-CID3-ID1cEVI1.html"
+  ],
+  "title": "nowe-pierwszy-najem-3-pokoje-56-m-zupnicza-bezposrednio-CID3-ID1cEVI1.html",
+  "kept": null,
+  "reason": "gone",
+  "who": "kotik",
+  "at": "2026-11-06T17:06"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/wynajme-3-pokojowe-mieszkanie-57-m-jana-kazimierza-32b-warszawa-wola-CID3-ID1cUOxo.html"
+  ],
+  "title": "wynajme-3-pokojowe-mieszkanie-57-m-jana-kazimierza-32b-warszawa-wola-CID3-ID1cUO",
+  "kept": null,
+  "reason": "gone",
+  "who": "kotik",
+  "at": "2026-11-06T17:06"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/nowe-pierwszy-najem-3-pokoje-56-m-zupnicza-bezposrednio-CID3-ID1cEVI1.html"
+  ],
+  "title": "nowe-pierwszy-najem-3-pokoje-56-m-zupnicza-bezposrednio-CID3-ID1cEVI1.html",
+  "kept": null,
+  "reason": "gone",
+  "who": "vlad",
+  "at": "2026-11-06T17:06"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/mieszkanie-2-pok-43-m2-splace-rydygiera-klimatyzacja-CID3-ID1cXQjc.html"
+  ],
+  "title": "mieszkanie-2-pok-43-m2-splace-rydygiera-klimatyzacja-CID3-ID1cXQjc.html",
+  "kept": null,
+  "reason": "gone",
+  "who": "vlad",
+  "at": "2026-11-02T16:15"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.otodom.pl/pl/oferta/2-pokoje-49-m-ogrodek-50-m-wlochy-garaz-ID4Djar"
+  ],
+  "title": "2 pokoje 49 m² + ogródek 50 m² | Włochy| garaż",
+  "kept": null,
+  "reason": "gone",
+  "who": "kotik",
+  "at": "2026-11-02T15:48"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.otodom.pl/pl/oferta/luksusowe-3-pokoje-z-garderoba-w-zielonej-enklawie-w-centrum-warszawy-ID4DkmA"
+  ],
+  "title": "Luksusowe 3 pokoje z garderobą w zielonej enklawie w centrum Warszawy",
+  "kept": null,
+  "reason": "gone",
+  "who": "vlad",
+  "at": "2026-11-02T15:48"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/nowoczesne-mieszkanie-w-sercu-warszawy-na-wynajem-CID3-ID1cKpjU.html"
+  ],
+  "title": "nowoczesne-mieszkanie-w-sercu-warszawy-na-wynajem-CID3-ID1cKpjU.html",
+  "kept": null,
+  "reason": "gone",
+  "who": "kotik",
+  "at": "2026-11-01T16:00"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/nowoczesne-mieszkanie-w-sercu-warszawy-na-wynajem-CID3-ID1cKpjU.html"
+  ],
+  "title": "nowoczesne-mieszkanie-w-sercu-warszawy-na-wynajem-CID3-ID1cKpjU.html",
+  "kept": null,
+  "reason": "gone",
+  "who": "vlad",
+  "at": "2026-11-01T16:00"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/od-listopada-mieszkanie-na-milej-3-pok-45-m2-kominek-balkon-wanna-CID3-ID1cyWII.html"
+  ],
+  "title": "OD LISTOPADA | Mieszkanie na Miłej, 3 pok., 45 m2, kominek, balkon, wanna",
+  "kept": null,
+  "reason": "gone",
+  "who": "kotik",
+  "at": "2026-10-30T23:17"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/od-listopada-mieszkanie-na-milej-3-pok-45-m2-kominek-balkon-wanna-CID3-ID1cyWII.html"
+  ],
+  "title": "OD LISTOPADA | Mieszkanie na Miłej, 3 pok., 45 m2, kominek, balkon, wanna",
+  "kept": null,
+  "reason": "gone",
+  "who": "vlad",
+  "at": "2026-10-30T23:17"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/mieszkanie-2-pokojowe-w-srodmiesciu-z-garazem-CID3-ID1cR6xi.html"
+  ],
+  "title": "mieszkanie-2-pokojowe-w-srodmiesciu-z-garazem-CID3-ID1cR6xi.html",
+  "kept": null,
+  "reason": "gone",
+  "who": "adel",
+  "at": "2026-10-30T20:03"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/dwupokojowe-mieszkanie-w-srodmiesciu-przy-krakowskim-przedmiesciu-CID3-ID1cCl5K.html"
+  ],
+  "title": "dwupokojowe-mieszkanie-w-srodmiesciu-przy-krakowskim-przedmiesciu-CID3-ID1cCl5K.",
+  "kept": null,
+  "reason": "gone",
+  "who": "kotik",
+  "at": "2026-10-30T20:03"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/mieszkanie-2-pokojowe-w-srodmiesciu-z-garazem-CID3-ID1cR6xi.html"
+  ],
+  "title": "mieszkanie-2-pokojowe-w-srodmiesciu-z-garazem-CID3-ID1cR6xi.html",
+  "kept": null,
+  "reason": "gone",
+  "who": "kotik",
+  "at": "2026-10-30T20:03"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/dwupokojowe-mieszkanie-w-srodmiesciu-przy-krakowskim-przedmiesciu-CID3-ID1cCl5K.html"
+  ],
+  "title": "dwupokojowe-mieszkanie-w-srodmiesciu-przy-krakowskim-przedmiesciu-CID3-ID1cCl5K.",
+  "kept": null,
+  "reason": "gone",
+  "who": "vlad",
+  "at": "2026-10-30T20:03"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/okazja-przepiekne-nowe-3-pokojowe-65m-przy-uczelni-leona-kozminskiego-za-3800-zl-garaz-metro-i-i-ii-linia-CID3-ID1cyDY1.html"
+  ],
+  "title": "okazja-przepiekne-nowe-3-pokojowe-65m-przy-uczelni-leona-kozminskiego-za-3800-zl",
+  "kept": null,
+  "reason": "gone",
+  "who": "vlad",
+  "at": "2026-10-30T20:03"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.otodom.pl/pl/oferta/do-wynajecia-atrakcyjne-na-starowce-wawa-mieszkanie-ID4Die3"
+  ],
+  "title": "Do wynajęcia atrakcyjne na Starówce Wawa mieszkanie",
+  "kept": null,
+  "reason": "gone",
+  "who": "vlad",
+  "at": "2026-10-30T11:01"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.otodom.pl/pl/oferta/bez-prowizji-3-pokojowe-z-balkonem-dostepne-od-zaraz-rabat-50-ID4CIge"
+  ],
+  "title": "BEZ PROWIZJI, 3 pokojowe z balkonem dostępne od zaraz, RABAT -50%",
+  "kept": null,
+  "reason": "gone",
+  "who": "vlad",
+  "at": "2026-10-30T11:01"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.otodom.pl/pl/oferta/przytulne-3-pokojowe-mieszkanie-po-remoncie-z-klimatyzacja-ID4yxWX"
+  ],
+  "title": "Przytulne 3-pokojowe mieszkanie po remoncie z klimatyzacją",
+  "kept": null,
+  "reason": "okaz",
+  "who": "vlad",
+  "at": "2026-10-30T01:49"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/stylowy-apartament-z-garazem-ul-gieldowa-metro-daszynskiego-CID3-ID1ccUh6.html"
+  ],
+  "title": "stylowy-apartament-z-garazem-ul-gieldowa-metro-daszynskiego-CID3-ID1ccUh6.html",
+  "kept": null,
+  "reason": "gone",
+  "who": "vlad",
+  "at": "2026-10-29T16:34"
+ },
+ {
+  "kind": "pair",
+  "urls": [
+   "https://www.olx.pl/d/oferta/bez-prowizji-3-pokojowe-z-balkonem-CID3-ID1cvBkf.html",
+   "https://www.olx.pl/d/oferta/bez-prowizji-3-pokojowe-z-balkonem-dostepne-od-zaraz-rabat-50-CID3-ID1cvyCJ.html"
+  ],
+  "title": "BEZ PROWIZJI, 3-pokojowe z balkonem + BEZ PROWIZJI, 3 pokojowe z balkonem dostępne od zaraz, RABAT -50%",
+  "kept": null,
+  "reason": "gone",
+  "who": "vlad",
+  "at": "2026-10-28T20:14"
+ },
+ {
+  "kind": "pair",
+  "urls": [
+   "https://www.olx.pl/d/oferta/bez-prowizji-3-pokojowe-z-balkonem-CID3-ID1cvBkf.html"
+  ],
+  "title": "BEZ PROWIZJI, 3-pokojowe z balkonem",
+  "kept": "https://www.otodom.pl/pl/oferta/bez-prowizji-3-pokojowe-z-balkonem-dostepne-od-zaraz-rabat-50-ID4CIge",
+  "kept_title": "BEZ PROWIZJI, 3 pokojowe z balkonem dostępne od zaraz, RABAT -50%",
+  "reason": "gone",
+  "who": "vlad",
+  "at": "2026-10-28T20:14"
+ },
+ {
+  "kind": "pair",
+  "urls": [
+   "https://www.olx.pl/d/oferta/bez-prowizji-3-pokojowe-z-balkonem-CID3-ID1cvBkf.html"
+  ],
+  "title": "BEZ PROWIZJI, 3-pokojowe z balkonem",
+  "kept": "https://www.otodom.pl/pl/oferta/bez-prowizji-3-pokojowe-z-garderoba-50-na-pierwszy-miesiac-ID4DsfR",
+  "kept_title": "Zarezerwowane-",
+  "reason": "gone",
+  "who": "vlad",
+  "at": "2026-10-28T20:14"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/bez-prowizji-3-pokojowe-z-balkonem-CID3-ID1cvBkf.html"
+  ],
+  "title": "BEZ PROWIZJI, 3-pokojowe z balkonem",
+  "kept": null,
+  "reason": "gone",
+  "who": "vlad",
+  "at": "2026-10-28T20:14"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/mieszkanie-48-06m2-stare-miasto-warszawa-CID3-ID1cvEbL.html"
+  ],
+  "title": "Mieszkanie 48,06m2 Stare Miasto, Warszawa",
+  "kept": null,
+  "reason": "gone",
+  "who": "vlad",
+  "at": "2026-10-28T20:14"
+ },
+ {
+  "kind": "apt",
+  "urls": [
+   "https://www.olx.pl/d/oferta/2-pokoje-blisko-metra-plocka-CID3-ID1bLzGx.html"
+  ],
+  "title": "2-pokoje-blisko-metra-plocka-CID3-ID1bLzGx.html",
+  "kept": null,
+  "reason": "gone",
+  "who": "kotik",
+  "at": "2026-10-27T23:20"
+ }
+]
